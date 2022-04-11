@@ -1,0 +1,39 @@
+overwrite: true
+schema:
+  - 'https://graphql.datocms.com':
+      headers:
+        Authorization: ${NEXT_DATOCMS_API_TOKEN}
+documents:
+  - 'src/queries/**/*.graphql'
+generates:
+  src/generated/sdk.ts:
+    plugins:
+      - add:
+          content: "import { Json } from './dato-scalars';"
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
+    config:
+      namingConvention:
+        enumValues: keep
+      maybeValue: T
+      avoidOptionals: true
+      # don't allow not found scalars (would end up with `any` type)
+      strictScalars: true
+      # declare Dato scalars and map them to a TS type
+      scalars:
+        IntType: number
+        FloatType: number
+        BooleanType: boolean
+        Date: string
+        DateTime: string
+        ItemId: string
+        UploadId: string
+        # Json is a custom type defined in `src/generated/dato-scalars.ts`
+        CustomData: Json
+        JsonField: Json
+        MetaTagAttributes: Json
+hooks:
+    afterAllFileWrite:
+        - prettier --write
+        - eslint --fix

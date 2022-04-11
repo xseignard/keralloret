@@ -1,0 +1,93 @@
+fragment Image on FileField {
+  responsiveImage {
+    src
+    height
+    width
+    aspectRatio
+    alt
+  }
+}
+
+fragment Reglage on ReglageRecord {
+  couleur1 {
+    hex
+  }
+  couleur2 {
+    hex
+  }
+  couleur3 {
+    hex
+  }
+  logo {
+    ...Image
+  }
+  # nav
+  accueil
+  decouvrir
+  approfondir
+  investir
+  newsletter
+  #contacts
+  facebook
+  instagram
+  email
+  notreNewsletter
+}
+
+
+fragment PageAccueil on PageAccueilRecord {
+  image {
+    ...Image
+  }
+  titrePrincipal
+  presentation {
+    blocks
+    links
+    value
+  }
+  introApprofondir {
+    blocks
+    links
+    value
+  }
+  introDecouvrir {
+    blocks
+    links
+    value
+  }
+  citation1 {
+    blocks
+    links
+    value
+  }
+  citation1Auteur
+  citation2 {
+    blocks
+    links
+    value
+  }
+  citation2Auteur
+}
+
+fragment Article on ArticleRecord {
+  id
+  titre
+  image {
+    ...Image
+  }
+  date
+  texte {
+    blocks
+    links
+    value
+  }
+  galerie {
+    ...Image
+  }
+  citation {
+    blocks
+    links
+    value
+  }
+  auteurCitation
+}

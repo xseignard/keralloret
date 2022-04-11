@@ -1,0 +1,5 @@
+query getAllArticles {
+  allArticles(orderBy: date_DESC) {
+    ...Article
+  }
+}

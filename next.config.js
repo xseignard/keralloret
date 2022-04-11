@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['placekitten.com'],
+    domains: ['www.datocms-assets.com'],
   },
 };
 

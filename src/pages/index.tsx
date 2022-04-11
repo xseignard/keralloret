@@ -2,45 +2,49 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { BlobImage } from '~/component/BlobImage';
+import { Actus } from '~/components/Actus';
+import { Hero } from '~/components/Hero';
+import { Nav } from '~/components/Nav';
+import { ArticleRecord, PageAccueilRecord, ReglageRecord } from '~/generated/sdk';
+import { getApi } from '~/utils/api';
 
-const Home: NextPage = () => {
+const Home: NextPage<{
+  pageAccueil: PageAccueilRecord;
+  reglage: ReglageRecord;
+  allArticles: ArticleRecord[];
+}> = ({ pageAccueil, reglage, allArticles }) => {
   return (
-    <div className="flex flex-col min-h-screen relative">
+    <div className="flex flex-col items-center min-h-screen relative bg-background overflow-x-hidden">
       <Head>
         <title>Keralloret</title>
         <meta name="description" content="Keralloret" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <BlobImage src="https://placekitten.com/g/320/240" width={320} height={240} />
-        <BlobImage src="https://placekitten.com/g/320/320" width={320} height={320} />
-        <BlobImage src="https://placekitten.com/g/240/320" width={240} height={320} />
-        <BlobImage
-          src="https://placekitten.com/g/320/240"
-          width={320}
-          height={240}
-          growth={0.7}
-          pointCount={20}
-        />
-        <BlobImage
-          src="https://placekitten.com/g/320/240"
-          width={320}
-          height={240}
-          growth={0.6}
-          pointCount={30}
-        />
-        <BlobImage
-          src="https://placekitten.com/g/320/240"
-          width={320}
-          height={240}
-          growth={0.5}
-          pointCount={40}
-        />
-      </main>
+      <section className="w-screen px-5 md:max-w-screen-xl mb-6">
+        <Nav reglage={reglage} />
+        <Hero reglage={reglage} pageAccueil={pageAccueil} />
+      </section>
+      <section
+        className="w-screen flex justify-center"
+        style={{ backgroundColor: reglage.couleur2.hex }}
+      >
+        <Actus reglage={reglage} articles={allArticles} />
+      </section>
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const api = getApi();
+  const [pageAccueil, reglage, articles] = await Promise.all([
+    api.getPageAccueil(),
+    api.getReglage(),
+    api.getAllArticles(),
+  ]);
+  return {
+    props: { ...pageAccueil, ...reglage, ...articles },
+  };
+}
 
 export default Home;
