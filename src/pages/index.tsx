@@ -2,17 +2,30 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Actus } from '~/components/Actus';
+import { Footer } from '~/components/Footer';
 import { Hero } from '~/components/Hero';
+import { HomeApprofondir } from '~/components/HomeApprofondir';
+import { HomeArticles } from '~/components/HomeArticles';
+import { HomeCagnotte } from '~/components/HomeCagnotte';
+import { HomeDecouvrir } from '~/components/HomeDecouvrir';
+import { HomeInvestir } from '~/components/HomeInvestir';
 import { Nav } from '~/components/Nav';
-import { ArticleRecord, PageAccueilRecord, ReglageRecord } from '~/generated/sdk';
+import {
+  ArticleRecord,
+  CagnotteRecord,
+  InvestirRecord,
+  PageAccueilRecord,
+  ReglageRecord,
+} from '~/generated/sdk';
 import { getApi } from '~/utils/api';
 
 const Home: NextPage<{
   pageAccueil: PageAccueilRecord;
   reglage: ReglageRecord;
   allArticles: ArticleRecord[];
-}> = ({ pageAccueil, reglage, allArticles }) => {
+  investir: InvestirRecord;
+  cagnotte: CagnotteRecord;
+}> = ({ pageAccueil, reglage, allArticles, investir, cagnotte }) => {
   return (
     <div className="flex flex-col items-center min-h-screen relative bg-background overflow-x-hidden">
       <Head>
@@ -29,7 +42,28 @@ const Home: NextPage<{
         className="w-screen flex justify-center"
         style={{ backgroundColor: reglage.couleur2.hex }}
       >
-        <Actus reglage={reglage} articles={allArticles} />
+        <HomeArticles reglage={reglage} articles={allArticles} />
+      </section>
+      <section className="w-screen flex justify-center">
+        <HomeDecouvrir reglage={reglage} pageAccueil={pageAccueil} />
+      </section>
+      <section
+        className="w-screen flex justify-center"
+        style={{ backgroundColor: reglage.couleur2.hex }}
+      >
+        <HomeApprofondir reglage={reglage} pageAccueil={pageAccueil} />
+      </section>
+      <section className="w-screen flex justify-center">
+        <HomeInvestir reglage={reglage} investir={investir} />
+      </section>
+      <section className="w-screen flex justify-center">
+        <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
+      </section>
+      <section
+        className="w-screen flex justify-center"
+        style={{ backgroundColor: reglage.couleur1.hex }}
+      >
+        <Footer reglage={reglage} />
       </section>
     </div>
   );
@@ -37,13 +71,15 @@ const Home: NextPage<{
 
 export async function getServerSideProps() {
   const api = getApi();
-  const [pageAccueil, reglage, articles] = await Promise.all([
+  const [pageAccueil, reglage, articles, investir, cagnotte] = await Promise.all([
     api.getPageAccueil(),
     api.getReglage(),
     api.getAllArticles(),
+    api.getInvestir(),
+    api.getCagnotte(),
   ]);
   return {
-    props: { ...pageAccueil, ...reglage, ...articles },
+    props: { ...pageAccueil, ...reglage, ...articles, ...investir, ...cagnotte },
   };
 }
 

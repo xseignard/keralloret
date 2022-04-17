@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { motion, useCycle } from 'framer-motion';
 
+import { ReglageFragment } from '~/generated/sdk';
+
 import { Link } from '.';
 import MenuContent from './MenuContent';
 import MenuToggle from './MenuToggle';
@@ -22,7 +24,7 @@ const sidebar = {
   },
 };
 
-const Menu: React.FC<{ links: Link[] }> = ({ links }) => {
+const Menu: React.FC<{ links: Link[]; reglage: ReglageFragment }> = ({ links, reglage }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   useEffect(() => {
@@ -32,9 +34,9 @@ const Menu: React.FC<{ links: Link[] }> = ({ links }) => {
 
   return (
     <motion.div initial="closed" animate={isOpen ? 'open' : 'closed'}>
-      <motion.div className="absolute z-10 inset-0 h-screen bg-background" variants={sidebar} />
+      <motion.div className="fixed z-10 inset-0 h-screen bg-white" variants={sidebar} />
       <MenuContent links={links} />
-      <MenuToggle toggle={() => toggleOpen()} />
+      <MenuToggle toggle={() => toggleOpen()} color={reglage.couleur1.hex} />
     </motion.div>
   );
 };

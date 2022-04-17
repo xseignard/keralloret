@@ -2,25 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
 
 import { ReglageFragment } from '~/generated/sdk';
 
+import { LinkWrapper } from '../LinkWrapper';
 import Menu from './Menu';
 
 export type Link = { text: string; href: string };
-
-const Wrapper: React.FC<{ className: string; bg?: string }> = ({ children, className, bg }) => (
-  <motion.div
-    className={className}
-    style={{ backgroundColor: bg }}
-    whileInView={{ rotate: -3 }}
-    whileHover={{ scale: 1.02, rotate: -3 }}
-    whileTap={{ scale: 0.95, rotate: -3 }}
-  >
-    {children}
-  </motion.div>
-);
 
 export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
   const links: Link[] = [
@@ -55,7 +43,7 @@ export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
         {links.map(({ text, href }, index) => {
           const isLast = index === links.length - 1;
           return (
-            <Wrapper
+            <LinkWrapper
               key={index}
               className={classNames('py-2 px-6', {
                 'ml-8 mr-0 rounded-full': isLast,
@@ -73,12 +61,12 @@ export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
                   {text}
                 </a>
               </Link>
-            </Wrapper>
+            </LinkWrapper>
           );
         })}
       </div>
       <div className="block md:hidden">
-        <Menu links={links} />
+        <Menu links={links} reglage={reglage} />
       </div>
     </nav>
   );

@@ -39,6 +39,13 @@ export type ArticleModelCitationField = {
   value: Scalars['JsonField'];
 };
 
+export type ArticleModelExtraitField = {
+  __typename?: 'ArticleModelExtraitField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
 export type ArticleModelFilter = {
   OR: InputMaybe<Array<InputMaybe<ArticleModelFilter>>>;
   _createdAt: InputMaybe<CreatedAtFilter>;
@@ -53,6 +60,7 @@ export type ArticleModelFilter = {
   citation: InputMaybe<StructuredTextFilter>;
   createdAt: InputMaybe<CreatedAtFilter>;
   date: InputMaybe<DateFilter>;
+  extrait: InputMaybe<StructuredTextFilter>;
   galerie: InputMaybe<GalleryFilter>;
   id: InputMaybe<ItemIdFilter>;
   image: InputMaybe<FileFilter>;
@@ -117,6 +125,7 @@ export type ArticleRecord = {
   citation: Maybe<ArticleModelCitationField>;
   createdAt: Scalars['DateTime'];
   date: Maybe<Scalars['Date']>;
+  extrait: Maybe<ArticleModelExtraitField>;
   galerie: Array<FileField>;
   id: Scalars['ItemId'];
   image: Maybe<FileField>;
@@ -134,6 +143,13 @@ export type ArticleRecord_SeoMetaTagsArgs = {
 export type BooleanFilter = {
   /** Search for records with an exact match */
   eq: InputMaybe<Scalars['BooleanType']>;
+};
+
+export type CagnotteModelTexteField = {
+  __typename?: 'CagnotteModelTexteField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
 };
 
 /** Record of type Cagnotte (cagnotte) */
@@ -154,18 +170,14 @@ export type CagnotteRecord = {
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   objectif: Maybe<Scalars['IntType']>;
-  texte: Maybe<Scalars['String']>;
+  paliers: Array<PalierRecord>;
+  texte: Maybe<CagnotteModelTexteField>;
   updatedAt: Scalars['DateTime'];
 };
 
 /** Record of type Cagnotte (cagnotte) */
 export type CagnotteRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
-};
-
-/** Record of type Cagnotte (cagnotte) */
-export type CagnotteRecordTexteArgs = {
-  markdown: InputMaybe<Scalars['Boolean']>;
 };
 
 export type CollectionMetadata = {
@@ -1772,13 +1784,6 @@ export type InUseFilter = {
   eq: InputMaybe<Scalars['BooleanType']>;
 };
 
-export type InvestirModelAuteurCitationField = {
-  __typename?: 'InvestirModelAuteurCitationField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
 export type InvestirModelCitationField = {
   __typename?: 'InvestirModelCitationField';
   blocks: Array<Scalars['String']>;
@@ -1788,13 +1793,6 @@ export type InvestirModelCitationField = {
 
 export type InvestirModelTexteInvestirField = {
   __typename?: 'InvestirModelTexteInvestirField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type InvestirModelTitreInvestirField = {
-  __typename?: 'InvestirModelTitreInvestirField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -1814,12 +1812,11 @@ export type InvestirRecord = {
   _status: ItemStatus;
   _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  auteurCitation: Maybe<InvestirModelAuteurCitationField>;
+  auteurCitation: Maybe<Scalars['String']>;
   citation: Maybe<InvestirModelCitationField>;
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   texteInvestir: Maybe<InvestirModelTexteInvestirField>;
-  titreInvestir: Maybe<InvestirModelTitreInvestirField>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -1993,6 +1990,7 @@ export type PageAccueilRecord = {
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   image: Maybe<FileField>;
+  imageDecouvrir: Maybe<FileField>;
   introApprofondir: Maybe<PageAccueilModelIntroApprofondirField>;
   introDecouvrir: Maybe<PageAccueilModelIntroDecouvrirField>;
   presentation: Maybe<PageAccueilModelPresentationField>;
@@ -2447,6 +2445,32 @@ export type PageNewsletterRecord = {
 
 /** Record of type Page Newsletter (page_newsletter) */
 export type PageNewsletterRecord_SeoMetaTagsArgs = {
+  locale: InputMaybe<SiteLocale>;
+};
+
+/** Record of type Palier (palier) */
+export type PalierRecord = {
+  __typename?: 'PalierRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt: Maybe<Scalars['DateTime']>;
+  _publishedAt: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  createdAt: Scalars['DateTime'];
+  description: Maybe<Scalars['String']>;
+  id: Scalars['ItemId'];
+  montant: Maybe<Scalars['IntType']>;
+  updatedAt: Scalars['DateTime'];
+};
+
+/** Record of type Palier (palier) */
+export type PalierRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
@@ -3357,6 +3381,12 @@ export type GetAllArticlesQuery = {
         alt: string;
       };
     };
+    extrait: {
+      __typename?: 'ArticleModelExtraitField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
     texte: {
       __typename?: 'ArticleModelTexteField';
       blocks: Array<string>;
@@ -3381,6 +3411,24 @@ export type GetAllArticlesQuery = {
       value: Json;
     };
   }>;
+};
+
+export type GetCagnotteQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCagnotteQuery = {
+  __typename?: 'Query';
+  cagnotte: {
+    __typename?: 'CagnotteRecord';
+    objectif: number;
+    aujourdhui: number;
+    texte: {
+      __typename?: 'CagnotteModelTexteField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    paliers: Array<{ __typename?: 'PalierRecord'; montant: number; description: string }>;
+  };
 };
 
 export type ImageFragment = {
@@ -3450,6 +3498,17 @@ export type PageAccueilFragment = {
     links: Array<string>;
     value: Json;
   };
+  imageDecouvrir: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
   introDecouvrir: {
     __typename?: 'PageAccueilModelIntroDecouvrirField';
     blocks: Array<string>;
@@ -3487,6 +3546,12 @@ export type ArticleFragment = {
       alt: string;
     };
   };
+  extrait: {
+    __typename?: 'ArticleModelExtraitField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
   texte: {
     __typename?: 'ArticleModelTexteField';
     blocks: Array<string>;
@@ -3509,6 +3574,60 @@ export type ArticleFragment = {
     blocks: Array<string>;
     links: Array<string>;
     value: Json;
+  };
+};
+
+export type InvestirFragment = {
+  __typename?: 'InvestirRecord';
+  auteurCitation: string;
+  citation: {
+    __typename?: 'InvestirModelCitationField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteInvestir: {
+    __typename?: 'InvestirModelTexteInvestirField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+};
+
+export type PalierFragment = { __typename?: 'PalierRecord'; montant: number; description: string };
+
+export type CagnotteFragment = {
+  __typename?: 'CagnotteRecord';
+  objectif: number;
+  aujourdhui: number;
+  texte: {
+    __typename?: 'CagnotteModelTexteField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  paliers: Array<{ __typename?: 'PalierRecord'; montant: number; description: string }>;
+};
+
+export type GetInvestirQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetInvestirQuery = {
+  __typename?: 'Query';
+  investir: {
+    __typename?: 'InvestirRecord';
+    auteurCitation: string;
+    citation: {
+      __typename?: 'InvestirModelCitationField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteInvestir: {
+      __typename?: 'InvestirModelTexteInvestirField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
   };
 };
 
@@ -3543,6 +3662,17 @@ export type GetPageAccueilQuery = {
       blocks: Array<string>;
       links: Array<string>;
       value: Json;
+    };
+    imageDecouvrir: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
     };
     introDecouvrir: {
       __typename?: 'PageAccueilModelIntroDecouvrirField';
@@ -3650,6 +3780,9 @@ export const PageAccueilFragmentDoc = gql`
       links
       value
     }
+    imageDecouvrir {
+      ...Image
+    }
     introDecouvrir {
       blocks
       links
@@ -3678,6 +3811,11 @@ export const ArticleFragmentDoc = gql`
       ...Image
     }
     date
+    extrait {
+      blocks
+      links
+      value
+    }
     texte {
       blocks
       links
@@ -3695,6 +3833,42 @@ export const ArticleFragmentDoc = gql`
   }
   ${ImageFragmentDoc}
 `;
+export const InvestirFragmentDoc = gql`
+  fragment Investir on InvestirRecord {
+    auteurCitation
+    citation {
+      blocks
+      links
+      value
+    }
+    texteInvestir {
+      blocks
+      links
+      value
+    }
+  }
+`;
+export const PalierFragmentDoc = gql`
+  fragment Palier on PalierRecord {
+    montant
+    description
+  }
+`;
+export const CagnotteFragmentDoc = gql`
+  fragment Cagnotte on CagnotteRecord {
+    objectif
+    aujourdhui
+    texte {
+      blocks
+      links
+      value
+    }
+    paliers {
+      ...Palier
+    }
+  }
+  ${PalierFragmentDoc}
+`;
 export const GetAllArticlesDocument = gql`
   query getAllArticles {
     allArticles(orderBy: date_DESC) {
@@ -3702,6 +3876,22 @@ export const GetAllArticlesDocument = gql`
     }
   }
   ${ArticleFragmentDoc}
+`;
+export const GetCagnotteDocument = gql`
+  query getCagnotte {
+    cagnotte {
+      ...Cagnotte
+    }
+  }
+  ${CagnotteFragmentDoc}
+`;
+export const GetInvestirDocument = gql`
+  query getInvestir {
+    investir {
+      ...Investir
+    }
+  }
+  ${InvestirFragmentDoc}
 `;
 export const GetPageAccueilDocument = gql`
   query getPageAccueil {
@@ -3741,6 +3931,34 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getAllArticles',
+        'query'
+      );
+    },
+    getCagnotte(
+      variables?: GetCagnotteQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetCagnotteQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetCagnotteQuery>(GetCagnotteDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getCagnotte',
+        'query'
+      );
+    },
+    getInvestir(
+      variables?: GetInvestirQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetInvestirQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetInvestirQuery>(GetInvestirDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getInvestir',
         'query'
       );
     },

@@ -50,6 +50,9 @@ fragment PageAccueil on PageAccueilRecord {
     links
     value
   }
+  imageDecouvrir {
+    ...Image
+  }
   introDecouvrir {
     blocks
     links
@@ -76,6 +79,11 @@ fragment Article on ArticleRecord {
     ...Image
   }
   date
+  extrait {
+    blocks
+    links
+    value
+  }
   texte {
     blocks
     links
@@ -90,4 +98,36 @@ fragment Article on ArticleRecord {
     value
   }
   auteurCitation
+}
+
+fragment Investir on InvestirRecord {
+  auteurCitation
+  citation {
+    blocks
+    links
+    value
+  }
+  texteInvestir {
+    blocks
+    links
+    value
+  }
+}
+
+fragment Palier on PalierRecord {
+  montant
+  description
+}
+
+fragment Cagnotte on CagnotteRecord {
+  objectif
+  aujourdhui
+  texte {
+    blocks
+    links
+    value
+  }
+  paliers {
+    ...Palier
+  }
 }

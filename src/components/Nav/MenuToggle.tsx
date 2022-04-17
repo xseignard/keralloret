@@ -3,16 +3,16 @@ import React from 'react';
 import { motion, SVGMotionProps } from 'framer-motion';
 
 const Path = (props: SVGMotionProps<SVGPathElement>) => (
-  <motion.path fill="transparent" strokeWidth="3" stroke="black" strokeLinecap="round" {...props} />
+  <motion.path fill="transparent" strokeWidth="3" strokeLinecap="round" {...props} />
 );
 
-const MenuToggle: React.FC<{ toggle: () => void }> = ({ toggle }) => (
+const MenuToggle: React.FC<{ toggle: () => void; color: string }> = ({ toggle, color }) => (
   <button
     title="menu"
     onClick={toggle}
-    className="absolute z-10 right-4 border-none outline-none focus:outline-none bg-transparent"
+    className="fixed z-10 right-4 border-none outline-none focus:outline-none bg-transparent"
   >
-    <svg width="23" height="23" viewBox="0 0 23 23">
+    <svg width="23" height="23" viewBox="0 0 23 23" stroke={color}>
       <Path
         variants={{
           closed: { d: 'M 2 2.5 L 20 2.5', transition: { delay: 0.8 } },

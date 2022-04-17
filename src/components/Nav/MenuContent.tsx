@@ -15,7 +15,7 @@ const variants = {
 };
 
 const MenuContent: React.FC<{ links: Link[] }> = ({ links }) => (
-  <div className="absolute z-10 inset-0 h-screen" style={{ padding: '50% 0' }}>
+  <div className="fixed z-10 inset-0 h-screen" style={{ padding: '50% 0' }}>
     <motion.ul
       className="flex flex-col justify-between items-center"
       style={{ height: '100%' }}
