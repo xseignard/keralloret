@@ -29,9 +29,7 @@ export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
             {format(parseISO(article.date), 'dd MMMM yyyy', { locale: frLocale })}
           </span>
           <h2 className="prose prose-2xl font-other mb-4">{article.titre}</h2>
-          <div className="">
-            <Content data={article.extrait} />
-          </div>
+          <Content data={article.extrait} />
         </div>
       </BlobWrapper>
     </div>
