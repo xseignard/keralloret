@@ -1,4 +1,5 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,16 +18,23 @@ export const BlobWrapper: React.FC<{
   const generator = useBlob();
   const [path, setPath] = useState<string>();
   const [id, setId] = useState<string>();
+  const [timestamp, setTimestamp] = useState(new Date().getTime());
+  const router = useRouter();
+  const handleRouteChange = useCallback(() => {
+    setTimestamp(new Date().getTime());
+  }, []);
+  useEffect(() => {
+    return router.events.on('routeChangeComplete', handleRouteChange);
+  }, [handleRouteChange, router.events]);
 
   useEffect(() => {
     if (wrapper.current) {
       const { width, height } = wrapper.current.getBoundingClientRect();
       const p = generator({ width, height, growth, pointCount });
-      console.log(p);
       setPath(p);
-      setId(uuidv4());
+      setId(uuidv4() + timestamp);
     }
-  }, [generator, growth, pointCount, wrapper]);
+  }, [generator, growth, pointCount, timestamp]);
 
   return (
     <div

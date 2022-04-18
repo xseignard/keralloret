@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import classNames from 'classnames';
 
@@ -29,16 +30,23 @@ export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
       href: '/investir',
     },
     {
+      text: reglage.actus,
+      href: '/actus',
+    },
+    {
       text: reglage.newsletter,
       href: '/newsletter',
     },
   ];
+  const router = useRouter();
 
   return (
     <nav id="nav" className="nav-height">
       <div className="hidden md:flex flex-row w-full justify-between">
         {links.map(({ text, href }, index) => {
           const isLast = index === links.length - 1;
+          const isSelected =
+            router.pathname === href || (router.pathname === '/actu/[id]' && href === '/actus');
           return (
             <LinkWrapper
               key={index}
@@ -50,9 +58,9 @@ export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
               <Link href={href}>
                 <a
                   className={classNames('text-xl md:text-2xl font-other', {
-                    'underline underline-offset-4 relative -top-0.5': isLast,
+                    'underline underline-offset-4 relative -top-0.5': isLast || isSelected,
                   })}
-                  style={{ color: isLast ? reglage.couleur1.hex : 'unset' }}
+                  style={{ color: isLast || isSelected ? reglage.couleur1.hex : 'unset' }}
                 >
                   {text}
                 </a>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import format from 'date-fns/format';
 import frLocale from 'date-fns/locale/fr';
 import parseISO from 'date-fns/parseISO';
+import { motion } from 'framer-motion';
 
 import { ArticleFragment } from '~/generated/sdk';
 
@@ -13,8 +14,12 @@ import { Content } from '../Content';
 
 export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
   return (
-    <Link href={`/article/${article.id}`}>
-      <a>
+    <Link href={`/actu/${article.id}`} passHref>
+      <motion.a
+        className="font-other text-xl text-white text-center py-2"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <div className="flex-1">
           <BlobWrapper>
             <Image
@@ -36,7 +41,7 @@ export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
             </div>
           </BlobWrapper>
         </div>
-      </a>
+      </motion.a>
     </Link>
   );
 };

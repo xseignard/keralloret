@@ -26,6 +26,7 @@ fragment Reglage on ReglageRecord {
   decouvrir
   approfondir
   investir
+  actus
   newsletter
   #contacts
   facebook

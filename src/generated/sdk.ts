@@ -257,7 +257,6 @@ export type FaqModelFilter = {
   _updatedAt: InputMaybe<UpdatedAtFilter>;
   createdAt: InputMaybe<CreatedAtFilter>;
   id: InputMaybe<ItemIdFilter>;
-  image: InputMaybe<FileFilter>;
   question: InputMaybe<StringFilter>;
   reponse: InputMaybe<TextFilter>;
   updatedAt: InputMaybe<UpdatedAtFilter>;
@@ -306,7 +305,6 @@ export type FaqRecord = {
   _updatedAt: Scalars['DateTime'];
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
-  image: Maybe<FileField>;
   question: Maybe<Scalars['String']>;
   reponse: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
@@ -1843,6 +1841,12 @@ export enum ItemStatus {
   updated = 'updated',
 }
 
+export type LatLonField = {
+  __typename?: 'LatLonField';
+  latitude: Maybe<Scalars['FloatType']>;
+  longitude: Maybe<Scalars['FloatType']>;
+};
+
 export type LexiqueModelDefinitionField = {
   __typename?: 'LexiqueModelDefinitionField';
   blocks: Array<Scalars['String']>;
@@ -2306,6 +2310,7 @@ export type PageDecouvrirRecord = {
   imageLieu: Maybe<FileField>;
   imagesDeLaGalerie: Array<FileField>;
   imagesPlan: Array<FileField>;
+  localisation: Maybe<LatLonField>;
   texteHistorique: Maybe<PageDecouvrirModelTexteHistoriqueField>;
   texteIntro: Maybe<PageDecouvrirModelTexteIntroField>;
   texteLieu: Maybe<PageDecouvrirModelTexteLieuField>;
@@ -2826,6 +2831,7 @@ export type ReglageRecord = {
   _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
   accueil: Maybe<Scalars['String']>;
+  actus: Maybe<Scalars['String']>;
   approfondir: Maybe<Scalars['String']>;
   couleur1: Maybe<ColorField>;
   couleur2: Maybe<ColorField>;
@@ -3504,6 +3510,7 @@ export type ReglageFragment = {
   decouvrir: string;
   approfondir: string;
   investir: string;
+  actus: string;
   newsletter: string;
   facebook: string;
   instagram: string;
@@ -3760,6 +3767,7 @@ export type GetReglageQuery = {
     decouvrir: string;
     approfondir: string;
     investir: string;
+    actus: string;
     newsletter: string;
     facebook: string;
     instagram: string;
@@ -3811,6 +3819,7 @@ export const ReglageFragmentDoc = gql`
     decouvrir
     approfondir
     investir
+    actus
     newsletter
     facebook
     instagram

@@ -26,7 +26,7 @@ const variants = {
 const MenuItem: React.FC<{ link: Link; isLast: boolean }> = ({ link: { text, href }, isLast }) => {
   return (
     <motion.li
-      className={classNames('text-xl md:text-2xl font-bold cursor-pointer', {
+      className={classNames('text-xl md:text-2xl font-bold cursor-pointer transform -rotate-3', {
         'px-4 py-2 bg-yellow rounded-full': isLast,
       })}
       variants={variants}
