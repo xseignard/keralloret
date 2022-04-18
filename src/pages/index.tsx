@@ -2,6 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { Content } from '~/components/Content';
 import { Footer } from '~/components/Footer';
 import { Hero } from '~/components/Hero';
 import { HomeApprofondir } from '~/components/HomeApprofondir';
@@ -41,7 +42,17 @@ const Home: NextPage<{
         <Nav reglage={reglage} />
       </SectionWrapper>
       <SectionWrapper debug={debug}>
-        <Hero reglage={reglage} pageAccueil={pageAccueil} />
+        <Hero
+          image={pageAccueil.image}
+          title={pageAccueil.titrePrincipal}
+          titleColor={reglage.couleur1.hex}
+        />
+      </SectionWrapper>
+      <SectionWrapper>
+        <Content
+          data={pageAccueil.presentation}
+          className="prose md:max-w-screen-xl prose-xl md:prose-2xl font-prose mb-8"
+        />
       </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeArticles reglage={reglage} articles={allArticles} />

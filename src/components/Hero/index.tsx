@@ -1,42 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import { PageAccueilFragment, ReglageFragment } from '~/generated/sdk';
+import { ImageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
-import { Content } from '../Content';
 
 export const Hero = ({
-  reglage,
-  pageAccueil,
+  image,
+  title,
+  titleColor,
 }: {
-  reglage: ReglageFragment;
-  pageAccueil: PageAccueilFragment;
+  image: ImageFragment;
+  title: string;
+  titleColor: string;
 }) => {
+  const [height, setHeight] = useState<number>();
+  const [width, setWidth] = useState<number>();
+  useEffect(() => {
+    const newWidth = Math.min(window.innerWidth, 1280);
+    setWidth(newWidth);
+    setHeight(Math.round(newWidth / image.responsiveImage.aspectRatio));
+  }, [image.responsiveImage]);
+
   return (
     <div className="w-full flex flex-col items-center mb-8">
-      <div className="w-2/3">
-        <BlobWrapper>
+      {width && height && (
+        <BlobWrapper growth={0.95} style={{ width, height }}>
           <Image
-            src={pageAccueil.image.responsiveImage.src}
-            width="100%"
-            height="100%"
-            layout="responsive"
+            src={image.responsiveImage.src}
+            layout="fill"
             objectFit="cover"
-            alt={pageAccueil.image.responsiveImage.alt}
+            alt={image.responsiveImage.alt}
           />
         </BlobWrapper>
-      </div>
+      )}
       <h1
-        className="text-2xl md:text-4xl font-other transform -rotate-3 mt-8 mb-16"
-        style={{ color: reglage.couleur1.hex }}
+        className="text-2xl md:text-4xl font-other transform -rotate-3 mt-8"
+        style={{ color: titleColor }}
       >
-        {pageAccueil.titrePrincipal}
+        {title}
       </h1>
-      <Content
-        data={pageAccueil.presentation}
-        className="prose md:max-w-screen-xl prose-xl md:prose-2xl font-prose"
-      />
     </div>
   );
 };
