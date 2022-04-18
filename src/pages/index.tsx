@@ -10,6 +10,7 @@ import { HomeCagnotte } from '~/components/HomeCagnotte';
 import { HomeDecouvrir } from '~/components/HomeDecouvrir';
 import { HomeInvestir } from '~/components/HomeInvestir';
 import { Nav } from '~/components/Nav';
+import { SectionWrapper } from '~/components/SectionWrapper';
 import {
   ArticleRecord,
   CagnotteRecord,
@@ -18,6 +19,8 @@ import {
   ReglageRecord,
 } from '~/generated/sdk';
 import { getApi } from '~/utils/api';
+
+const debug = false;
 
 const Home: NextPage<{
   pageAccueil: PageAccueilRecord;
@@ -34,37 +37,30 @@ const Home: NextPage<{
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="w-screen px-5 md:max-w-screen-xl mb-6">
+      <SectionWrapper debug={debug}>
         <Nav reglage={reglage} />
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
         <Hero reglage={reglage} pageAccueil={pageAccueil} />
-      </section>
-      <section
-        className="w-screen flex justify-center"
-        style={{ backgroundColor: reglage.couleur2.hex }}
-      >
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeArticles reglage={reglage} articles={allArticles} />
-      </section>
-      <section className="w-screen flex justify-center">
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
         <HomeDecouvrir reglage={reglage} pageAccueil={pageAccueil} />
-      </section>
-      <section
-        className="w-screen flex justify-center"
-        style={{ backgroundColor: reglage.couleur2.hex }}
-      >
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeApprofondir reglage={reglage} pageAccueil={pageAccueil} />
-      </section>
-      <section className="w-screen flex justify-center">
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
         <HomeInvestir reglage={reglage} investir={investir} />
-      </section>
-      <section className="w-screen flex justify-center">
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
-      </section>
-      <section
-        className="w-screen flex justify-center"
-        style={{ backgroundColor: reglage.couleur1.hex }}
-      >
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur1.hex} debug={debug}>
         <Footer reglage={reglage} />
-      </section>
+      </SectionWrapper>
     </div>
   );
 };

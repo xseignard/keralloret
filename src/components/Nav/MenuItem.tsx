@@ -36,7 +36,7 @@ const MenuItem: React.FC<{ link: Link; isLast: boolean }> = ({ link: { text, hre
     >
       <NextLink href={href}>
         <a
-          className={classNames('text-xl md:text-2xl font-noto-sans', {
+          className={classNames('text-xl md:text-2xl font-other', {
             'text-blue underline underline-offset-4 relative -top-0.5': isLast,
           })}
         >

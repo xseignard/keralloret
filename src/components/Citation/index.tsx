@@ -13,8 +13,8 @@ export const Citation = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <Content data={citation} className="text-4xl font-bold font-work-sans" style={{ color }} />
-      <span className="text-2xl font-bold font-work-sans mt-4" style={{ color }}>
+      <Content data={citation} className="text-4xl font-bold font-other" style={{ color }} />
+      <span className="text-2xl font-bold font-other mt-4" style={{ color }}>
         {auteur}
       </span>
     </div>

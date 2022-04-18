@@ -12,7 +12,7 @@ import { Content } from '../Content';
 
 export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
   return (
-    <div className="flex-1 px-4">
+    <div className="flex-1">
       <BlobWrapper>
         <Image
           src={article.image.responsiveImage.src}
@@ -24,12 +24,12 @@ export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
         />
       </BlobWrapper>
       <BlobWrapper growth={0.95}>
-        <div className="flex flex-col bg-white px-8 py-16">
-          <span className="prose prose-sm mt-8 mb-4 font-noto-sans">
+        <div className="flex flex-col bg-white px-10 py-16">
+          <span className="prose prose-sm mt-4 mb-4 font-prose">
             {format(parseISO(article.date), 'dd MMMM yyyy', { locale: frLocale })}
           </span>
-          <h2 className="prose prose-2xl font-work-sans">{article.titre}</h2>
-          <div className="mb-8">
+          <h2 className="prose prose-2xl font-other mb-4">{article.titre}</h2>
+          <div className="">
             <Content data={article.extrait} />
           </div>
         </div>

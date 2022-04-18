@@ -35,25 +35,21 @@ export const Nav = ({ reglage }: { reglage: ReglageFragment }) => {
   ];
 
   return (
-    <nav
-      id="nav"
-      className="flex justify-center items-center md:flex-row flex-1 pt-6 pb-6 md:pb-12 nav-height"
-    >
-      <div className="hidden md:flex flex-row">
+    <nav id="nav" className="nav-height">
+      <div className="hidden md:flex flex-row w-full justify-between">
         {links.map(({ text, href }, index) => {
           const isLast = index === links.length - 1;
           return (
             <LinkWrapper
               key={index}
               className={classNames('py-2 px-6', {
-                'ml-8 mr-0 rounded-full': isLast,
-                'ml-0 mr-8': !isLast,
+                'ml-16 rounded-full': isLast,
               })}
               bg={isLast ? reglage.couleur2.hex : 'unset'}
             >
               <Link href={href}>
                 <a
-                  className={classNames('text-xl md:text-2xl font-noto-sans', {
+                  className={classNames('text-xl md:text-2xl font-other', {
                     'underline underline-offset-4 relative -top-0.5': isLast,
                   })}
                   style={{ color: isLast ? reglage.couleur1.hex : 'unset' }}

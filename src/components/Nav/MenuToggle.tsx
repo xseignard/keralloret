@@ -10,7 +10,7 @@ const MenuToggle: React.FC<{ toggle: () => void; color: string }> = ({ toggle, c
   <button
     title="menu"
     onClick={toggle}
-    className="fixed z-10 right-4 border-none outline-none focus:outline-none bg-transparent"
+    className="absolute z-10 right-4 border-none outline-none focus:outline-none bg-transparent"
   >
     <svg width="23" height="23" viewBox="0 0 23 23" stroke={color}>
       <Path

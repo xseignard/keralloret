@@ -8,8 +8,8 @@ module.exports = {
         yellow: 'rgb(253, 224, 71)',
       },
       fontFamily: {
-        'work-sans': ['Work Sans', 'sans-serif'],
-        'noto-sans': ['Noto Sans', 'sans-serif'],
+        prose: ['Noto Sans', 'sans-serif'],
+        other: ['Work Sans', 'sans-serif'],
       },
     },
   },

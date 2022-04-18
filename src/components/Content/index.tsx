@@ -12,7 +12,7 @@ export type ContentType = {
 
 export const Content = ({
   data,
-  className = 'prose md:max-w-screen-xl md:prose-xl font-noto-sans',
+  className = 'prose md:max-w-screen-xl md:prose-xl font-prose',
   style,
 }: {
   data: ContentType;

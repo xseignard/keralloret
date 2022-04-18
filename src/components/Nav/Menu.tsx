@@ -34,7 +34,7 @@ const Menu: React.FC<{ links: Link[]; reglage: ReglageFragment }> = ({ links, re
 
   return (
     <motion.div initial="closed" animate={isOpen ? 'open' : 'closed'}>
-      <motion.div className="fixed z-10 inset-0 h-screen bg-white" variants={sidebar} />
+      <motion.div className="absolute z-10 inset-0 h-screen bg-white" variants={sidebar} />
       <MenuContent links={links} />
       <MenuToggle toggle={() => toggleOpen()} color={reglage.couleur1.hex} />
     </motion.div>

@@ -2,24 +2,28 @@ import React from 'react';
 
 import { CagnotteFragment, PalierFragment, ReglageFragment } from '~/generated/sdk';
 
+import { SectionTitle } from '../SectionTitle';
+
 const Palier = ({
   palier,
   objectif,
   top,
   last,
+  color,
 }: {
   palier: PalierFragment;
   objectif: CagnotteFragment['objectif'];
   top: boolean;
   last: boolean;
+  color: string;
 }) => {
   return (
     <div
       className={`absolute w-fit flex ${top ? '-top-[84px] flex-col-reverse' : 'flex-col'}`}
       style={{ left: `calc(${(palier.montant / objectif) * 100}% - ${last ? '24px' : '0px'})` }}
     >
-      <div className="w-0.5 h-6 bg-gray-200" />
-      <div className="flex flex-col transform -translate-x-1/2 text-center font-noto-sans mt-1">
+      <div className="w-0.5 h-6" style={{ backgroundColor: color }} />
+      <div className="flex flex-col transform -translate-x-1/2 text-center font-prose mt-1 font-bold">
         <span>{palier.montant}€</span>
         <span className="w-full">{palier.description}</span>
       </div>
@@ -35,15 +39,13 @@ export const HomeCagnotte = ({
   cagnotte: CagnotteFragment;
 }) => {
   return (
-    <div className="w-full px-5 md:max-w-screen-xl flex flex-col mb-4 md:mb-32">
-      <h2
-        className="text-xl md:text-2xl font-work-sans transform -rotate-3 mb-8 md:mb-16 mt-8 md:mt-0"
-        style={{ color: reglage.couleur1.hex }}
-      >
-        La cagnotte en cours
-      </h2>
+    <div className="mb-4 md:mb-24">
+      <SectionTitle text="La cagnotte en cours" color={reglage.couleur1.hex} />
       <div className="relative">
-        <div className="absolute top-0 left-0 w-full h-14 border-2 border-gray-200 rounded-full" />
+        <div
+          className="absolute top-0 left-0 w-full h-14 border-2 rounded-full"
+          style={{ borderColor: reglage.couleur1.hex }}
+        />
         <div
           className="w-full top-0 left-0 h-14 rounded-full flex items-center justify-center"
           style={{
@@ -51,7 +53,7 @@ export const HomeCagnotte = ({
             width: `${(cagnotte.aujourdhui / cagnotte.objectif) * 100}%`,
           }}
         >
-          <span className="text-white font-work-sans">{cagnotte.aujourdhui}€</span>
+          <span className="text-white font-other">{cagnotte.aujourdhui}€</span>
         </div>
         <div className="hidden md:block prose">
           {cagnotte.paliers.map((palier, index) => {
@@ -64,6 +66,7 @@ export const HomeCagnotte = ({
                 objectif={cagnotte.objectif}
                 top={top}
                 last={last}
+                color={reglage.couleur1.hex}
               />
             );
           })}
@@ -73,8 +76,8 @@ export const HomeCagnotte = ({
             {cagnotte.paliers.map((palier, index) => {
               return (
                 <li key={index}>
-                  <span className="font-work-sans font-bold mr-1">{palier.montant}€:</span>
-                  <span className="font-noto-sans">{palier.description}</span>
+                  <span className="font-other font-bold mr-1">{palier.montant}€:</span>
+                  <span className="font-prose">{palier.description}</span>
                 </li>
               );
             })}

@@ -1,10 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 
 import { InvestirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { Citation } from '../Citation';
 import { Content } from '../Content';
+import { SectionLink } from '../SectionLink';
+import { SectionTitle } from '../SectionTitle';
 
 export const HomeInvestir = ({
   reglage,
@@ -14,17 +15,12 @@ export const HomeInvestir = ({
   investir: InvestirFragment;
 }) => {
   return (
-    <div className="w-full px-5 md:max-w-screen-xl flex flex-col">
-      <h2
-        className="text-xl md:text-2xl font-work-sans transform -rotate-3 mb-8 md:mb-16 mt-8 md:mt-0"
-        style={{ color: reglage.couleur1.hex }}
-      >
-        Investir
-      </h2>
-      <div className="flex flex-col-reverse md:flex-row px-4">
+    <div className="flex flex-col">
+      <SectionTitle text="Investir" color={reglage.couleur1.hex} />
+      <div className="flex flex-col-reverse md:flex-row">
         <Content
           data={investir.texteInvestir}
-          className="max-w-none prose md:prose-xl font-noto-sans"
+          className="max-w-none prose md:prose-xl font-prose"
         />
         <div className="flex flex-col mb-16 md:mb-0 md:ml-12">
           <Citation
@@ -34,16 +30,7 @@ export const HomeInvestir = ({
           />
         </div>
       </div>
-      <Link href="/decouvrir">
-        <a className="md:self-end">
-          <h2
-            className="text-xl md:text-2xl font-work-sans transform -rotate-3 mb-8 md:mb-16 underline underline-offset-4"
-            style={{ color: reglage.couleur1.hex }}
-          >
-            + d'infos
-          </h2>
-        </a>
-      </Link>
+      <SectionLink href="/decouvrir" text="+ d'infos" color={reglage.couleur1.hex} />
     </div>
   );
 };
