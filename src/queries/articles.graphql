@@ -3,3 +3,11 @@ query getAllArticles {
     ...Article
   }
 }
+
+query getArticle($id: ItemId) {
+  article(
+    filter: { id: { eq: $id } }
+  ) {
+    ...Article
+  }
+}

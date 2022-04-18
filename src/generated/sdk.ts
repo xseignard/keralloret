@@ -3413,6 +3413,61 @@ export type GetAllArticlesQuery = {
   }>;
 };
 
+export type GetArticleQueryVariables = Exact<{
+  id: InputMaybe<Scalars['ItemId']>;
+}>;
+
+export type GetArticleQuery = {
+  __typename?: 'Query';
+  article: {
+    __typename?: 'ArticleRecord';
+    id: string;
+    titre: string;
+    date: string;
+    auteurCitation: string;
+    image: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    extrait: {
+      __typename?: 'ArticleModelExtraitField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texte: {
+      __typename?: 'ArticleModelTexteField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    galerie: Array<{
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    }>;
+    citation: {
+      __typename?: 'ArticleModelCitationField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+  };
+};
+
 export type GetCagnotteQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCagnotteQuery = {
@@ -3877,6 +3932,14 @@ export const GetAllArticlesDocument = gql`
   }
   ${ArticleFragmentDoc}
 `;
+export const GetArticleDocument = gql`
+  query getArticle($id: ItemId) {
+    article(filter: { id: { eq: $id } }) {
+      ...Article
+    }
+  }
+  ${ArticleFragmentDoc}
+`;
 export const GetCagnotteDocument = gql`
   query getCagnotte {
     cagnotte {
@@ -3931,6 +3994,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getAllArticles',
+        'query'
+      );
+    },
+    getArticle(
+      variables?: GetArticleQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetArticleQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetArticleQuery>(GetArticleDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getArticle',
         'query'
       );
     },
