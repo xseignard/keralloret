@@ -25,13 +25,13 @@ export const ApprofondirMontage = ({
   return (
     <div className="w-full md:max-w-screen-xl flex flex-col">
       <SectionTitle text={pageApprofondir.titreMontage} color={reglage.couleur1.hex} />
-      <div className="flex flex-col-reverse md:flex-row md:items-end">
-        <div className="md:w-2/3 flex flex-col mt-8 md:mt-0">
-          <ApprofondirDocs docs={docs} />
-        </div>
+      <div className="flex flex-col">
         <BlobWrapper growth={0.99} pointCount={isMobile ? 200 : 80}>
           <div className="bg-white px-8 py-8 md:py-12">
             <Content data={pageApprofondir.texteMontage} />
+            <div className="mt-8">
+              <ApprofondirDocs docs={docs} />
+            </div>
           </div>
         </BlobWrapper>
       </div>

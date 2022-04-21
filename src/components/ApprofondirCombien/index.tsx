@@ -18,7 +18,7 @@ export const ApprofondirCombien = ({
     <div className="flex flex-col">
       <SectionTitle text={pageApprofondir.titreCombien} color={reglage.couleur1.hex} />
       <div className="flex flex-col-reverse md:flex-row md:items-start">
-        <div className="md:mr-4">
+        <div className="md:mr-8">
           <Content data={pageApprofondir.texteCombien} />
         </div>
         <div className="md:w-2/3 mb-8 md:mb-0">

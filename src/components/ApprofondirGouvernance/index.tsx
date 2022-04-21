@@ -32,14 +32,14 @@ export const ApprofondirGouvernance = ({
     <div className="flex flex-col">
       <SectionTitle text={pageApprofondir.titreGouvernance} color={reglage.couleur1.hex} />
       <div className="flex flex-col md:flex-row md:items-center">
-        <div className="md:w-2/3 mb-8 md:mb-0">
+        <div className="md:w-2/3 mt-8 md:mt-0 mb-8 md:mb-0">
           <Citation
             auteur={pageApprofondir.auteurCitationGouvernance}
             citation={pageApprofondir.citationGouvernance}
             color={reglage.couleur1.hex}
           />
         </div>
-        <div className="md:ml-4">
+        <div className="md:ml-8">
           <Content data={pageApprofondir.texteGouvernance} />
           <div className="mt-8">
             <ApprofondirDocs docs={docs} />

@@ -34,7 +34,7 @@ export const ApprofondirCollaboration = ({
             );
           })}
         </div>
-        <div className="md:ml-4">
+        <div className="md:ml-8">
           <Content data={pageApprofondir.texteCollaboration} />
         </div>
       </div>

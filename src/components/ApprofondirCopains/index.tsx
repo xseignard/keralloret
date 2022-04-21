@@ -18,7 +18,7 @@ export const ApprofondirCopains = ({
     <div className="flex flex-col">
       <SectionTitle text={pageApprofondir.titreCopains} color={reglage.couleur1.hex} />
       <div className="flex flex-col md:flex-row md:items-start">
-        <div className="mb-8 md:mb-0 md:mr-4">
+        <div className="mb-8 md:mb-0 md:mr-8">
           <Content data={pageApprofondir.texteCopains} />
         </div>
         <div className="md:w-2/3">
