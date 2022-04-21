@@ -31,7 +31,7 @@ export const Hero = ({
   return (
     <div className="w-full flex items-center flex-col mb-8">
       {width && height && (
-        <BlobWrapper growth={0.95} style={{ width, height }}>
+        <BlobWrapper growth={0.95} pointCount={16} style={{ width, height }}>
           <Image
             src={image.responsiveImage.src}
             layout="fill"

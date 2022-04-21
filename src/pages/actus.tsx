@@ -29,7 +29,7 @@ const Home: NextPage<{
       </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <SectionTitle text="Les Actus" color={reglage.couleur1.hex} />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {allArticles.map((article, index) => {
             return <ArticleItem key={index} article={article} />;
           })}

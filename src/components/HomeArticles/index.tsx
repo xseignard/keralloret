@@ -16,7 +16,7 @@ export const HomeArticles = ({
   return (
     <div className="flex flex-col">
       <SectionTitle text="Actus fraîches" color={reglage.couleur1.hex} />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {articles.slice(0, 3).map((article, index) => {
           return <ArticleItem key={index} article={article} />;
         })}
