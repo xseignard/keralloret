@@ -132,3 +132,87 @@ fragment Cagnotte on CagnotteRecord {
     ...Palier
   }
 }
+
+fragment PageApprofondir on PageApprofondirRecord {
+  auteurCitationGouvernance
+  citationGouvernance {
+    blocks
+    links
+    value
+  }
+  auteurCitationCombien
+  citationCombien {
+    blocks
+    links
+    value
+  }
+  documentGouvernance1 {
+    url
+  }
+  documentGouvernance2 {
+    url
+  }
+  documentGouvernance3 {
+    url
+  }
+  documentMontage1 {
+    url
+  }
+  documentMontage2 {
+    url
+  }
+  documentMontage3 {
+    url
+  }
+  documentMontage4 {
+    url
+  }
+  imageCombien {
+    ...Image
+  }
+  imageCopains {
+    ...Image
+  }
+  imagesCollaboration {
+    ...Image
+  }
+  texteCollaboration {
+    blocks
+    links
+    value
+  }
+  texteCombien {
+    blocks
+    links
+    value
+  }
+  texteCopains {
+    blocks
+    links
+    value
+  }
+  texteGouvernance {
+    blocks
+    links
+    value
+  }
+  texteMontage {
+    blocks
+    links
+    value
+  }
+  titreCollaboration
+  titreCombien
+  titreCopains
+  titreDocumentGouvernance1
+  titreDocumentGouvernance2
+  titreDocumentGouvernance3
+  titreDocumentMontage1
+  titreDocumentMontage2
+  titreDocumentMontage3
+  titreDocumentMontage4
+  titreFaq
+  titreGouvernance
+  titreLexique
+  titreMontage
+}

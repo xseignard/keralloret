@@ -2,20 +2,26 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { ApprofondirCollaboration } from '~/components/ApprofondirCollaboration';
+import { ApprofondirCombien } from '~/components/ApprofondirCombien';
+import { ApprofondirCopains } from '~/components/ApprofondirCopains';
+import { ApprofondirGouvernance } from '~/components/ApprofondirGouvernance';
+import { ApprofondirMontage } from '~/components/ApprofondirMontage';
 import { Footer } from '~/components/Footer';
 import { HomeCagnotte } from '~/components/HomeCagnotte';
 import { Nav } from '~/components/Nav';
 import { SectionTitle } from '~/components/SectionTitle';
 import { SectionWrapper } from '~/components/SectionWrapper';
-import { CagnotteRecord, ReglageRecord } from '~/generated/sdk';
+import { CagnotteRecord, PageApprofondirRecord, ReglageRecord } from '~/generated/sdk';
 import { getApi } from '~/utils/api';
 
-const debug = false;
+const debug = true;
 
 const Approfondir: NextPage<{
+  pageApprofondir: PageApprofondirRecord;
   reglage: ReglageRecord;
   cagnotte: CagnotteRecord;
-}> = ({ reglage, cagnotte }) => {
+}> = ({ pageApprofondir, reglage, cagnotte }) => {
   return (
     <div className="flex flex-col items-center min-h-screen relative bg-background overflow-x-hidden">
       <Head>
@@ -30,6 +36,21 @@ const Approfondir: NextPage<{
       <SectionWrapper debug={debug}>
         <SectionTitle text="Approfondir" color={reglage.couleur1.hex} />
       </SectionWrapper>
+      <SectionWrapper debug={debug}>
+        <ApprofondirGouvernance reglage={reglage} pageApprofondir={pageApprofondir} />
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
+        <ApprofondirMontage reglage={reglage} pageApprofondir={pageApprofondir} />
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
+        <ApprofondirCombien reglage={reglage} pageApprofondir={pageApprofondir} />
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
+        <ApprofondirCollaboration reglage={reglage} pageApprofondir={pageApprofondir} />
+      </SectionWrapper>
+      <SectionWrapper debug={debug}>
+        <ApprofondirCopains reglage={reglage} pageApprofondir={pageApprofondir} />
+      </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
       </SectionWrapper>
@@ -42,9 +63,13 @@ const Approfondir: NextPage<{
 
 export async function getServerSideProps() {
   const api = getApi();
-  const [reglage, cagnotte] = await Promise.all([api.getReglage(), api.getCagnotte()]);
+  const [pageApprofondir, reglage, cagnotte] = await Promise.all([
+    api.getPageApprofondir(),
+    api.getReglage(),
+    api.getCagnotte(),
+  ]);
   return {
-    props: { ...reglage, ...cagnotte },
+    props: { ...pageApprofondir, ...reglage, ...cagnotte },
   };
 }
 

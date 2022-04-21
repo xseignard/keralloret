@@ -1,0 +1,5 @@
+query getPageApprofondir {
+  pageApprofondir {
+    ...PageApprofondir
+  }
+}

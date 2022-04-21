@@ -2007,127 +2007,50 @@ export type PageAccueilRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
-export type PageApprofondirModelAuteurCitation1Field = {
-  __typename?: 'PageApprofondirModelAuteurCitation1Field';
+export type PageApprofondirModelCitationCombienField = {
+  __typename?: 'PageApprofondirModelCitationCombienField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelCitation1Field = {
-  __typename?: 'PageApprofondirModelCitation1Field';
+export type PageApprofondirModelCitationGouvernanceField = {
+  __typename?: 'PageApprofondirModelCitationGouvernanceField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelCitation2AuteurField = {
-  __typename?: 'PageApprofondirModelCitation2AuteurField';
+export type PageApprofondirModelTexteCollaborationField = {
+  __typename?: 'PageApprofondirModelTexteCollaborationField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelCitation2Field = {
-  __typename?: 'PageApprofondirModelCitation2Field';
+export type PageApprofondirModelTexteCombienField = {
+  __typename?: 'PageApprofondirModelTexteCombienField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelTexteCombienACoTeField = {
-  __typename?: 'PageApprofondirModelTexteCombienACoTeField';
+export type PageApprofondirModelTexteCopainsField = {
+  __typename?: 'PageApprofondirModelTexteCopainsField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelTexteCombienACouteField = {
-  __typename?: 'PageApprofondirModelTexteCombienACouteField';
+export type PageApprofondirModelTexteGouvernanceField = {
+  __typename?: 'PageApprofondirModelTexteGouvernanceField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageApprofondirModelTexteDoc2TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc2TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteDoc3TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc3TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteDoc4TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc4TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteDoc5TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc5TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteDoc6TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc6TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteDoc7TlChargerField = {
-  __typename?: 'PageApprofondirModelTexteDoc7TLChargerField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteIntroField = {
-  __typename?: 'PageApprofondirModelTexteIntroField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTexteLieuField = {
-  __typename?: 'PageApprofondirModelTexteLieuField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTitreCombienACoTeField = {
-  __typename?: 'PageApprofondirModelTitreCombienACoTeField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTitreIntroField = {
-  __typename?: 'PageApprofondirModelTitreIntroField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTitreLieuField = {
-  __typename?: 'PageApprofondirModelTitreLieuField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageApprofondirModelTitrePortraitsField = {
-  __typename?: 'PageApprofondirModelTitrePortraitsField';
+export type PageApprofondirModelTexteMontageField = {
+  __typename?: 'PageApprofondirModelTexteMontageField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2147,39 +2070,41 @@ export type PageApprofondirRecord = {
   _status: ItemStatus;
   _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  auteurCitation1: Maybe<PageApprofondirModelAuteurCitation1Field>;
-  citation1: Maybe<PageApprofondirModelCitation1Field>;
-  citation2: Maybe<PageApprofondirModelCitation2Field>;
-  citation2Auteur: Maybe<PageApprofondirModelCitation2AuteurField>;
+  auteurCitationCombien: Maybe<Scalars['String']>;
+  auteurCitationGouvernance: Maybe<Scalars['String']>;
+  citationCombien: Maybe<PageApprofondirModelCitationCombienField>;
+  citationGouvernance: Maybe<PageApprofondirModelCitationGouvernanceField>;
   createdAt: Scalars['DateTime'];
-  doc3TLCharger: Maybe<FileField>;
-  doc4TLCharger: Maybe<FileField>;
-  doc5TLCharger: Maybe<FileField>;
-  doc6TLCharger: Maybe<FileField>;
-  doc7TLCharger: Maybe<FileField>;
-  docTLCharger: Maybe<FileField>;
+  documentGouvernance1: Maybe<FileField>;
+  documentGouvernance2: Maybe<FileField>;
+  documentGouvernance3: Maybe<FileField>;
+  documentMontage1: Maybe<FileField>;
+  documentMontage2: Maybe<FileField>;
+  documentMontage3: Maybe<FileField>;
+  documentMontage4: Maybe<FileField>;
   id: Scalars['ItemId'];
-  imageCombienACoTe: Maybe<FileField>;
-  imagesCombienACoTe: Maybe<FileField>;
-  imagesPlan: Array<FileField>;
-  pdfOuJpegDuDocument1: Maybe<FileField>;
-  texteCombienACoTe: Maybe<PageApprofondirModelTexteCombienACoTeField>;
-  texteCombienACoute: Maybe<PageApprofondirModelTexteCombienACouteField>;
-  texteDoc2TLCharger: Maybe<PageApprofondirModelTexteDoc2TlChargerField>;
-  texteDoc3TLCharger: Maybe<PageApprofondirModelTexteDoc3TlChargerField>;
-  texteDoc4TLCharger: Maybe<PageApprofondirModelTexteDoc4TlChargerField>;
-  texteDoc5TLCharger: Maybe<PageApprofondirModelTexteDoc5TlChargerField>;
-  texteDoc6TLCharger: Maybe<PageApprofondirModelTexteDoc6TlChargerField>;
-  texteDoc7TLCharger: Maybe<PageApprofondirModelTexteDoc7TlChargerField>;
-  texteIntro: Maybe<PageApprofondirModelTexteIntroField>;
-  texteLieu: Maybe<PageApprofondirModelTexteLieuField>;
-  titreCombienACoTe: Maybe<PageApprofondirModelTitreCombienACoTeField>;
-  titreCombienACoute: Maybe<Scalars['String']>;
+  imageCombien: Maybe<FileField>;
+  imageCopains: Maybe<FileField>;
+  imagesCollaboration: Array<FileField>;
+  texteCollaboration: Maybe<PageApprofondirModelTexteCollaborationField>;
+  texteCombien: Maybe<PageApprofondirModelTexteCombienField>;
+  texteCopains: Maybe<PageApprofondirModelTexteCopainsField>;
+  texteGouvernance: Maybe<PageApprofondirModelTexteGouvernanceField>;
+  texteMontage: Maybe<PageApprofondirModelTexteMontageField>;
+  titreCollaboration: Maybe<Scalars['String']>;
+  titreCombien: Maybe<Scalars['String']>;
+  titreCopains: Maybe<Scalars['String']>;
+  titreDocumentGouvernance1: Maybe<Scalars['String']>;
+  titreDocumentGouvernance2: Maybe<Scalars['String']>;
+  titreDocumentGouvernance3: Maybe<Scalars['String']>;
+  titreDocumentMontage1: Maybe<Scalars['String']>;
+  titreDocumentMontage2: Maybe<Scalars['String']>;
+  titreDocumentMontage3: Maybe<Scalars['String']>;
+  titreDocumentMontage4: Maybe<Scalars['String']>;
   titreFaq: Maybe<Scalars['String']>;
-  titreIntro: Maybe<PageApprofondirModelTitreIntroField>;
+  titreGouvernance: Maybe<Scalars['String']>;
   titreLexique: Maybe<Scalars['String']>;
-  titreLieu: Maybe<PageApprofondirModelTitreLieuField>;
-  titrePortraits: Maybe<PageApprofondirModelTitrePortraitsField>;
+  titreMontage: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -3671,6 +3596,108 @@ export type CagnotteFragment = {
   paliers: Array<{ __typename?: 'PalierRecord'; montant: number; description: string }>;
 };
 
+export type PageApprofondirFragment = {
+  __typename?: 'PageApprofondirRecord';
+  auteurCitationGouvernance: string;
+  auteurCitationCombien: string;
+  titreCollaboration: string;
+  titreCombien: string;
+  titreCopains: string;
+  titreDocumentGouvernance1: string;
+  titreDocumentGouvernance2: string;
+  titreDocumentGouvernance3: string;
+  titreDocumentMontage1: string;
+  titreDocumentMontage2: string;
+  titreDocumentMontage3: string;
+  titreDocumentMontage4: string;
+  titreFaq: string;
+  titreGouvernance: string;
+  titreLexique: string;
+  titreMontage: string;
+  citationGouvernance: {
+    __typename?: 'PageApprofondirModelCitationGouvernanceField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  citationCombien: {
+    __typename?: 'PageApprofondirModelCitationCombienField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  documentGouvernance1: { __typename?: 'FileField'; url: string };
+  documentGouvernance2: { __typename?: 'FileField'; url: string };
+  documentGouvernance3: { __typename?: 'FileField'; url: string };
+  documentMontage1: { __typename?: 'FileField'; url: string };
+  documentMontage2: { __typename?: 'FileField'; url: string };
+  documentMontage3: { __typename?: 'FileField'; url: string };
+  documentMontage4: { __typename?: 'FileField'; url: string };
+  imageCombien: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  imageCopains: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  imagesCollaboration: Array<{
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  }>;
+  texteCollaboration: {
+    __typename?: 'PageApprofondirModelTexteCollaborationField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteCombien: {
+    __typename?: 'PageApprofondirModelTexteCombienField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteCopains: {
+    __typename?: 'PageApprofondirModelTexteCopainsField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteGouvernance: {
+    __typename?: 'PageApprofondirModelTexteGouvernanceField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteMontage: {
+    __typename?: 'PageApprofondirModelTexteMontageField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+};
+
 export type GetInvestirQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInvestirQuery = {
@@ -3750,6 +3777,113 @@ export type GetPageAccueilQuery = {
     };
     citation2: {
       __typename?: 'PageAccueilModelCitation2Field';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+  };
+};
+
+export type GetPageApprofondirQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPageApprofondirQuery = {
+  __typename?: 'Query';
+  pageApprofondir: {
+    __typename?: 'PageApprofondirRecord';
+    auteurCitationGouvernance: string;
+    auteurCitationCombien: string;
+    titreCollaboration: string;
+    titreCombien: string;
+    titreCopains: string;
+    titreDocumentGouvernance1: string;
+    titreDocumentGouvernance2: string;
+    titreDocumentGouvernance3: string;
+    titreDocumentMontage1: string;
+    titreDocumentMontage2: string;
+    titreDocumentMontage3: string;
+    titreDocumentMontage4: string;
+    titreFaq: string;
+    titreGouvernance: string;
+    titreLexique: string;
+    titreMontage: string;
+    citationGouvernance: {
+      __typename?: 'PageApprofondirModelCitationGouvernanceField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    citationCombien: {
+      __typename?: 'PageApprofondirModelCitationCombienField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    documentGouvernance1: { __typename?: 'FileField'; url: string };
+    documentGouvernance2: { __typename?: 'FileField'; url: string };
+    documentGouvernance3: { __typename?: 'FileField'; url: string };
+    documentMontage1: { __typename?: 'FileField'; url: string };
+    documentMontage2: { __typename?: 'FileField'; url: string };
+    documentMontage3: { __typename?: 'FileField'; url: string };
+    documentMontage4: { __typename?: 'FileField'; url: string };
+    imageCombien: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    imageCopains: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    imagesCollaboration: Array<{
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    }>;
+    texteCollaboration: {
+      __typename?: 'PageApprofondirModelTexteCollaborationField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteCombien: {
+      __typename?: 'PageApprofondirModelTexteCombienField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteCopains: {
+      __typename?: 'PageApprofondirModelTexteCopainsField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteGouvernance: {
+      __typename?: 'PageApprofondirModelTexteGouvernanceField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteMontage: {
+      __typename?: 'PageApprofondirModelTexteMontageField';
       blocks: Array<string>;
       links: Array<string>;
       value: Json;
@@ -3933,6 +4067,92 @@ export const CagnotteFragmentDoc = gql`
   }
   ${PalierFragmentDoc}
 `;
+export const PageApprofondirFragmentDoc = gql`
+  fragment PageApprofondir on PageApprofondirRecord {
+    auteurCitationGouvernance
+    citationGouvernance {
+      blocks
+      links
+      value
+    }
+    auteurCitationCombien
+    citationCombien {
+      blocks
+      links
+      value
+    }
+    documentGouvernance1 {
+      url
+    }
+    documentGouvernance2 {
+      url
+    }
+    documentGouvernance3 {
+      url
+    }
+    documentMontage1 {
+      url
+    }
+    documentMontage2 {
+      url
+    }
+    documentMontage3 {
+      url
+    }
+    documentMontage4 {
+      url
+    }
+    imageCombien {
+      ...Image
+    }
+    imageCopains {
+      ...Image
+    }
+    imagesCollaboration {
+      ...Image
+    }
+    texteCollaboration {
+      blocks
+      links
+      value
+    }
+    texteCombien {
+      blocks
+      links
+      value
+    }
+    texteCopains {
+      blocks
+      links
+      value
+    }
+    texteGouvernance {
+      blocks
+      links
+      value
+    }
+    texteMontage {
+      blocks
+      links
+      value
+    }
+    titreCollaboration
+    titreCombien
+    titreCopains
+    titreDocumentGouvernance1
+    titreDocumentGouvernance2
+    titreDocumentGouvernance3
+    titreDocumentMontage1
+    titreDocumentMontage2
+    titreDocumentMontage3
+    titreDocumentMontage4
+    titreFaq
+    titreGouvernance
+    titreLexique
+    titreMontage
+  }
+  ${ImageFragmentDoc}
+`;
 export const GetAllArticlesDocument = gql`
   query getAllArticles {
     allArticles(orderBy: date_DESC) {
@@ -3972,6 +4192,14 @@ export const GetPageAccueilDocument = gql`
     }
   }
   ${PageAccueilFragmentDoc}
+`;
+export const GetPageApprofondirDocument = gql`
+  query getPageApprofondir {
+    pageApprofondir {
+      ...PageApprofondir
+    }
+  }
+  ${PageApprofondirFragmentDoc}
 `;
 export const GetReglageDocument = gql`
   query getReglage {
@@ -4059,6 +4287,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getPageAccueil',
+        'query'
+      );
+    },
+    getPageApprofondir(
+      variables?: GetPageApprofondirQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPageApprofondirQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPageApprofondirQuery>(GetPageApprofondirDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getPageApprofondir',
         'query'
       );
     },
