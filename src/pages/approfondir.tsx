@@ -15,7 +15,7 @@ import { SectionWrapper } from '~/components/SectionWrapper';
 import { CagnotteRecord, PageApprofondirRecord, ReglageRecord } from '~/generated/sdk';
 import { getApi } from '~/utils/api';
 
-const debug = true;
+const debug = false;
 
 const Approfondir: NextPage<{
   pageApprofondir: PageApprofondirRecord;
