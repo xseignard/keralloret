@@ -20,9 +20,9 @@ export const DecouvrirMap = ({
       <div className="h-[400px]">
         <Map
           initialViewState={{
-            latitude: 47.17201859433297,
-            longitude: 3.9027195476779752,
-            zoom: 3.4,
+            longitude: -3.5941159126788307,
+            latitude: 48.26157417419401,
+            zoom: 6.25,
           }}
           mapStyle="mapbox://styles/mapbox/satellite-v9"
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}

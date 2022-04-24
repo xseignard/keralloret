@@ -21,7 +21,7 @@ export const DecouvrirLieu = ({
     <div className="flex flex-col">
       <SectionTitle text={pageDecouvrir.titreLieu} color={reglage.couleur1.hex} />
       <div className="flex flex-col md:flex-row md:items-start mb-8">
-        <div className="flex-1 mb-4 md:mb-0 md:mr-4">
+        <div className="flex-1 mb-4 md:mb-0 md:mr-8">
           <DecouvrirMap pageDecouvrir={pageDecouvrir} reglage={reglage} />
         </div>
         <div className="flex-1">
@@ -29,7 +29,7 @@ export const DecouvrirLieu = ({
         </div>
       </div>
       <div className="flex flex-col md:flex-row md:items-start mb-8">
-        <div className="flex-1 mb-4 md:mb-0 md:mr-4">
+        <div className="flex-1 mb-4 md:mb-0 md:mr-8">
           <Content data={pageDecouvrir.texteLieuEsprit} />
         </div>
         <div className="flex-1">
