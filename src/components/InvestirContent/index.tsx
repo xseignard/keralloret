@@ -4,7 +4,6 @@ import { InvestirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { Citation } from '../Citation';
 import { Content } from '../Content';
-import { SectionTitle } from '../SectionTitle';
 
 export const InvestirContent = ({
   reglage,

@@ -10,7 +10,6 @@ import { ApprofondirMontage } from '~/components/ApprofondirMontage';
 import { Footer } from '~/components/Footer';
 import { HomeCagnotte } from '~/components/HomeCagnotte';
 import { Nav } from '~/components/Nav';
-import { SectionTitle } from '~/components/SectionTitle';
 import { SectionWrapper } from '~/components/SectionWrapper';
 import { CagnotteRecord, PageApprofondirRecord, ReglageRecord } from '~/generated/sdk';
 import { getApi } from '~/utils/api';

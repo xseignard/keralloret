@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { ArticleItem } from '~/components/ArticleItem';
 import { Footer } from '~/components/Footer';
 import { Nav } from '~/components/Nav';
-import { SectionTitle } from '~/components/SectionTitle';
 import { SectionWrapper } from '~/components/SectionWrapper';
 import { ArticleRecord, ReglageRecord } from '~/generated/sdk';
 import { getApi } from '~/utils/api';
