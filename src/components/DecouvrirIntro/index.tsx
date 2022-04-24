@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
+import ReactPlayer from 'react-player';
+
 import { PageDecouvrirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
@@ -42,6 +44,17 @@ export const DecouvrirIntro = ({
           <Content data={pageDecouvrir.texteIntro} />
         </div>
       </div>
+      {pageDecouvrir.videoIntro && (
+        <div className="relative mt-8" style={{ paddingTop: '56.25%' }}>
+          <ReactPlayer
+            url={pageDecouvrir.videoIntro.url}
+            controls
+            width="100%"
+            height="100%"
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+      )}
     </div>
   );
 };
