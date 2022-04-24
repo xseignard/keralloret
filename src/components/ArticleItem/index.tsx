@@ -21,7 +21,7 @@ export const ArticleItem = ({ article }: { article: ArticleFragment }) => {
         whileTap={{ scale: 0.95 }}
       >
         <div className="flex-1 -mb-16">
-          <div className="relative z-10">
+          <div className="relative z-[1]">
             <BlobWrapper>
               <Image
                 src={article.image.responsiveImage.src}

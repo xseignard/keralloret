@@ -1,0 +1,5 @@
+query getPageDecouvrir {
+  pageDecouvrir {
+    ...PageDecouvrir
+  }
+}

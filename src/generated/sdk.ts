@@ -258,7 +258,7 @@ export type FaqModelFilter = {
   createdAt: InputMaybe<CreatedAtFilter>;
   id: InputMaybe<ItemIdFilter>;
   question: InputMaybe<StringFilter>;
-  reponse: InputMaybe<TextFilter>;
+  reponse: InputMaybe<StructuredTextFilter>;
   updatedAt: InputMaybe<UpdatedAtFilter>;
 };
 
@@ -289,6 +289,13 @@ export enum FaqModelOrderBy {
   updatedAt_DESC = 'updatedAt_DESC',
 }
 
+export type FaqModelReponseField = {
+  __typename?: 'FaqModelReponseField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
 /** Record of type Article FAQ (faq) */
 export type FaqRecord = {
   __typename?: 'FaqRecord';
@@ -306,18 +313,13 @@ export type FaqRecord = {
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   question: Maybe<Scalars['String']>;
-  reponse: Maybe<Scalars['String']>;
+  reponse: Maybe<FaqModelReponseField>;
   updatedAt: Scalars['DateTime'];
 };
 
 /** Record of type Article FAQ (faq) */
 export type FaqRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
-};
-
-/** Record of type Article FAQ (faq) */
-export type FaqRecordReponseArgs = {
-  markdown: InputMaybe<Scalars['Boolean']>;
 };
 
 export enum FaviconType {
@@ -2113,22 +2115,8 @@ export type PageApprofondirRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
-export type PageDecouvrirModelAuteurCitationIntroField = {
-  __typename?: 'PageDecouvrirModelAuteurCitationIntroField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelCitation2AuteurField = {
-  __typename?: 'PageDecouvrirModelCitation2AuteurField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelCitation2Field = {
-  __typename?: 'PageDecouvrirModelCitation2Field';
+export type PageDecouvrirModelCitationHistoriqueField = {
+  __typename?: 'PageDecouvrirModelCitationHistoriqueField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2155,8 +2143,15 @@ export type PageDecouvrirModelTexteIntroField = {
   value: Scalars['JsonField'];
 };
 
-export type PageDecouvrirModelTexteLieuField = {
-  __typename?: 'PageDecouvrirModelTexteLieuField';
+export type PageDecouvrirModelTexteLieuEspritField = {
+  __typename?: 'PageDecouvrirModelTexteLieuEspritField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
+export type PageDecouvrirModelTexteLieuOuField = {
+  __typename?: 'PageDecouvrirModelTexteLieuOuField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2164,48 +2159,6 @@ export type PageDecouvrirModelTexteLieuField = {
 
 export type PageDecouvrirModelTextePlanField = {
   __typename?: 'PageDecouvrirModelTextePlanField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTexteSurLEspritDesLieuxField = {
-  __typename?: 'PageDecouvrirModelTexteSurLEspritDesLieuxField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTitreGalerieField = {
-  __typename?: 'PageDecouvrirModelTitreGalerieField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTitreIntroField = {
-  __typename?: 'PageDecouvrirModelTitreIntroField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTitreLieuField = {
-  __typename?: 'PageDecouvrirModelTitreLieuField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTitrePlanField = {
-  __typename?: 'PageDecouvrirModelTitrePlanField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageDecouvrirModelTitrePortraitsField = {
-  __typename?: 'PageDecouvrirModelTitrePortraitsField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2225,31 +2178,32 @@ export type PageDecouvrirRecord = {
   _status: ItemStatus;
   _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  auteurCitationIntro: Maybe<PageDecouvrirModelAuteurCitationIntroField>;
-  citation2: Maybe<PageDecouvrirModelCitation2Field>;
-  citation2Auteur: Maybe<PageDecouvrirModelCitation2AuteurField>;
+  auteurCitationHistorique: Maybe<Scalars['String']>;
+  auteurCitationIntro: Maybe<Scalars['String']>;
+  citationHistorique: Maybe<PageDecouvrirModelCitationHistoriqueField>;
   citationIntro: Maybe<PageDecouvrirModelCitationIntroField>;
   createdAt: Scalars['DateTime'];
+  gpsLieu: Maybe<LatLonField>;
   id: Scalars['ItemId'];
   imageHistorique: Maybe<FileField>;
   imageLieu: Maybe<FileField>;
-  imagesDeLaGalerie: Array<FileField>;
-  imagesPlan: Array<FileField>;
-  localisation: Maybe<LatLonField>;
+  imagePlan: Maybe<FileField>;
+  imagesGalerie: Array<FileField>;
+  portraits: Array<PortraitRecord>;
   texteHistorique: Maybe<PageDecouvrirModelTexteHistoriqueField>;
   texteIntro: Maybe<PageDecouvrirModelTexteIntroField>;
-  texteLieu: Maybe<PageDecouvrirModelTexteLieuField>;
+  texteLieuEsprit: Maybe<PageDecouvrirModelTexteLieuEspritField>;
+  texteLieuOu: Maybe<PageDecouvrirModelTexteLieuOuField>;
   textePlan: Maybe<PageDecouvrirModelTextePlanField>;
-  texteSurLEspritDesLieux: Maybe<PageDecouvrirModelTexteSurLEspritDesLieuxField>;
-  titreGalerie: Maybe<PageDecouvrirModelTitreGalerieField>;
+  titreGalerie: Maybe<Scalars['String']>;
   titreHistorique: Maybe<Scalars['String']>;
-  titreIntro: Maybe<PageDecouvrirModelTitreIntroField>;
-  titreLieu: Maybe<PageDecouvrirModelTitreLieuField>;
-  titrePlan: Maybe<PageDecouvrirModelTitrePlanField>;
-  titrePortraits: Maybe<PageDecouvrirModelTitrePortraitsField>;
+  titreIntro: Maybe<Scalars['String']>;
+  titreLieu: Maybe<Scalars['String']>;
+  titrePlan: Maybe<Scalars['String']>;
+  titrePortraits: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
-  vidO2: Maybe<VideoField>;
   videoIntro: Maybe<VideoField>;
+  videoLieu: Maybe<VideoField>;
 };
 
 /** Record of type Page Découvrir (page_decouvrir) */
@@ -2264,22 +2218,8 @@ export type PageMentionsContactModelTexteContactField = {
   value: Scalars['JsonField'];
 };
 
-export type PageMentionsContactModelTexteMentionLGaleField = {
-  __typename?: 'PageMentionsContactModelTexteMentionLGaleField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageMentionsContactModelTitreContactField = {
-  __typename?: 'PageMentionsContactModelTitreContactField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageMentionsContactModelTitreMentionsLGalesField = {
-  __typename?: 'PageMentionsContactModelTitreMentionsLGalesField';
+export type PageMentionsContactModelTexteMentionsField = {
+  __typename?: 'PageMentionsContactModelTexteMentionsField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2303,9 +2243,9 @@ export type PageMentionsContactRecord = {
   id: Scalars['ItemId'];
   imageContact: Maybe<FileField>;
   texteContact: Maybe<PageMentionsContactModelTexteContactField>;
-  texteMentionLGale: Maybe<PageMentionsContactModelTexteMentionLGaleField>;
-  titreContact: Maybe<PageMentionsContactModelTitreContactField>;
-  titreMentionsLGales: Maybe<PageMentionsContactModelTitreMentionsLGalesField>;
+  texteMentions: Maybe<PageMentionsContactModelTexteMentionsField>;
+  titreContact: Maybe<Scalars['String']>;
+  titreMentions: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -2321,29 +2261,15 @@ export type PageNewsletterModelListeDeLienDesAnciennesNlField = {
   value: Scalars['JsonField'];
 };
 
-export type PageNewsletterModelTexteDAbonnementField = {
-  __typename?: 'PageNewsletterModelTexteDAbonnementField';
+export type PageNewsletterModelTexteAbonnementField = {
+  __typename?: 'PageNewsletterModelTexteAbonnementField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
 
-export type PageNewsletterModelTextePrCisionDonnEsField = {
-  __typename?: 'PageNewsletterModelTextePrCisionDonnEsField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageNewsletterModelTitreArchiveField = {
-  __typename?: 'PageNewsletterModelTitreArchiveField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
-
-export type PageNewsletterModelTitreJeMInscrisField = {
-  __typename?: 'PageNewsletterModelTitreJeMInscrisField';
+export type PageNewsletterModelTexteDonneesField = {
+  __typename?: 'PageNewsletterModelTexteDonneesField';
   blocks: Array<Scalars['String']>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
@@ -2366,10 +2292,10 @@ export type PageNewsletterRecord = {
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   listeDeLienDesAnciennesNl: Maybe<PageNewsletterModelListeDeLienDesAnciennesNlField>;
-  texteDAbonnement: Maybe<PageNewsletterModelTexteDAbonnementField>;
-  textePrCisionDonnEs: Maybe<PageNewsletterModelTextePrCisionDonnEsField>;
-  titreArchive: Maybe<PageNewsletterModelTitreArchiveField>;
-  titreJeMInscris: Maybe<PageNewsletterModelTitreJeMInscrisField>;
+  texteAbonnement: Maybe<PageNewsletterModelTexteAbonnementField>;
+  texteDonnees: Maybe<PageNewsletterModelTexteDonneesField>;
+  titreAbonnement: Maybe<Scalars['String']>;
+  titreArchives: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -2417,8 +2343,8 @@ export type PortraitModelFilter = {
   createdAt: InputMaybe<CreatedAtFilter>;
   id: InputMaybe<ItemIdFilter>;
   imagePortrait: InputMaybe<FileFilter>;
-  noms: InputMaybe<StringFilter>;
-  statutHabitantAutre: InputMaybe<StructuredTextFilter>;
+  nom: InputMaybe<StringFilter>;
+  statutHabitantAutre: InputMaybe<StringFilter>;
   textePortrait: InputMaybe<StructuredTextFilter>;
   updatedAt: InputMaybe<UpdatedAtFilter>;
 };
@@ -2444,18 +2370,13 @@ export enum PortraitModelOrderBy {
   createdAt_DESC = 'createdAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
-  noms_ASC = 'noms_ASC',
-  noms_DESC = 'noms_DESC',
+  nom_ASC = 'nom_ASC',
+  nom_DESC = 'nom_DESC',
+  statutHabitantAutre_ASC = 'statutHabitantAutre_ASC',
+  statutHabitantAutre_DESC = 'statutHabitantAutre_DESC',
   updatedAt_ASC = 'updatedAt_ASC',
   updatedAt_DESC = 'updatedAt_DESC',
 }
-
-export type PortraitModelStatutHabitantAutreField = {
-  __typename?: 'PortraitModelStatutHabitantAutreField';
-  blocks: Array<Scalars['String']>;
-  links: Array<Scalars['String']>;
-  value: Scalars['JsonField'];
-};
 
 export type PortraitModelTextePortraitField = {
   __typename?: 'PortraitModelTextePortraitField';
@@ -2481,8 +2402,8 @@ export type PortraitRecord = {
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
   imagePortrait: Maybe<FileField>;
-  noms: Maybe<Scalars['String']>;
-  statutHabitantAutre: Maybe<PortraitModelStatutHabitantAutreField>;
+  nom: Maybe<Scalars['String']>;
+  statutHabitantAutre: Maybe<Scalars['String']>;
   textePortrait: Maybe<PortraitModelTextePortraitField>;
   updatedAt: Scalars['DateTime'];
 };
@@ -2897,18 +2818,6 @@ export type Tag = {
   attributes: Maybe<Scalars['MetaTagAttributes']>;
   content: Maybe<Scalars['String']>;
   tag: Scalars['String'];
-};
-
-/** Specifies how to filter text fields */
-export type TextFilter = {
-  /** Filter records with the specified field defined (i.e. with any value) or not */
-  exists: InputMaybe<Scalars['BooleanType']>;
-  /** Filter records with the specified field set as blank (null or empty string) */
-  isBlank: InputMaybe<Scalars['BooleanType']>;
-  /** Filter records based on a regular expression */
-  matches: InputMaybe<StringMatchesFilter>;
-  /** Exclude records based on a regular expression */
-  notMatches: InputMaybe<StringMatchesFilter>;
 };
 
 /** Specifies how to filter by upload type */
@@ -3698,6 +3607,129 @@ export type PageApprofondirFragment = {
   };
 };
 
+export type PageDecouvrirFragment = {
+  __typename?: 'PageDecouvrirRecord';
+  auteurCitationHistorique: string;
+  auteurCitationIntro: string;
+  titreGalerie: string;
+  titreHistorique: string;
+  titreIntro: string;
+  titreLieu: string;
+  titrePlan: string;
+  titrePortraits: string;
+  citationHistorique: {
+    __typename?: 'PageDecouvrirModelCitationHistoriqueField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  citationIntro: {
+    __typename?: 'PageDecouvrirModelCitationIntroField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  gpsLieu: { __typename?: 'LatLonField'; latitude: number; longitude: number };
+  imageHistorique: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  imageLieu: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  imagesGalerie: Array<{
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  }>;
+  imagePlan: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  portraits: Array<{
+    __typename?: 'PortraitRecord';
+    nom: string;
+    statutHabitantAutre: string;
+    imagePortrait: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    textePortrait: {
+      __typename?: 'PortraitModelTextePortraitField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+  }>;
+  texteHistorique: {
+    __typename?: 'PageDecouvrirModelTexteHistoriqueField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteIntro: {
+    __typename?: 'PageDecouvrirModelTexteIntroField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteLieuEsprit: {
+    __typename?: 'PageDecouvrirModelTexteLieuEspritField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteLieuOu: {
+    __typename?: 'PageDecouvrirModelTexteLieuOuField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  textePlan: {
+    __typename?: 'PageDecouvrirModelTextePlanField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  videoIntro: { __typename?: 'VideoField'; url: string };
+  videoLieu: { __typename?: 'VideoField'; url: string };
+};
+
 export type GetInvestirQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInvestirQuery = {
@@ -3888,6 +3920,134 @@ export type GetPageApprofondirQuery = {
       links: Array<string>;
       value: Json;
     };
+  };
+};
+
+export type GetPageDecouvrirQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPageDecouvrirQuery = {
+  __typename?: 'Query';
+  pageDecouvrir: {
+    __typename?: 'PageDecouvrirRecord';
+    auteurCitationHistorique: string;
+    auteurCitationIntro: string;
+    titreGalerie: string;
+    titreHistorique: string;
+    titreIntro: string;
+    titreLieu: string;
+    titrePlan: string;
+    titrePortraits: string;
+    citationHistorique: {
+      __typename?: 'PageDecouvrirModelCitationHistoriqueField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    citationIntro: {
+      __typename?: 'PageDecouvrirModelCitationIntroField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    gpsLieu: { __typename?: 'LatLonField'; latitude: number; longitude: number };
+    imageHistorique: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    imageLieu: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    imagesGalerie: Array<{
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    }>;
+    imagePlan: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    portraits: Array<{
+      __typename?: 'PortraitRecord';
+      nom: string;
+      statutHabitantAutre: string;
+      imagePortrait: {
+        __typename?: 'FileField';
+        responsiveImage: {
+          __typename?: 'ResponsiveImage';
+          src: string;
+          height: number;
+          width: number;
+          aspectRatio: number;
+          alt: string;
+        };
+      };
+      textePortrait: {
+        __typename?: 'PortraitModelTextePortraitField';
+        blocks: Array<string>;
+        links: Array<string>;
+        value: Json;
+      };
+    }>;
+    texteHistorique: {
+      __typename?: 'PageDecouvrirModelTexteHistoriqueField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteIntro: {
+      __typename?: 'PageDecouvrirModelTexteIntroField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteLieuEsprit: {
+      __typename?: 'PageDecouvrirModelTexteLieuEspritField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteLieuOu: {
+      __typename?: 'PageDecouvrirModelTexteLieuOuField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    textePlan: {
+      __typename?: 'PageDecouvrirModelTextePlanField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    videoIntro: { __typename?: 'VideoField'; url: string };
+    videoLieu: { __typename?: 'VideoField'; url: string };
   };
 };
 
@@ -4153,6 +4313,88 @@ export const PageApprofondirFragmentDoc = gql`
   }
   ${ImageFragmentDoc}
 `;
+export const PageDecouvrirFragmentDoc = gql`
+  fragment PageDecouvrir on PageDecouvrirRecord {
+    auteurCitationHistorique
+    auteurCitationIntro
+    citationHistorique {
+      blocks
+      links
+      value
+    }
+    citationIntro {
+      blocks
+      links
+      value
+    }
+    gpsLieu {
+      latitude
+      longitude
+    }
+    imageHistorique {
+      ...Image
+    }
+    imageLieu {
+      ...Image
+    }
+    imagesGalerie {
+      ...Image
+    }
+    imagePlan {
+      ...Image
+    }
+    portraits {
+      nom
+      imagePortrait {
+        ...Image
+      }
+      statutHabitantAutre
+      textePortrait {
+        blocks
+        links
+        value
+      }
+    }
+    texteHistorique {
+      blocks
+      links
+      value
+    }
+    texteIntro {
+      blocks
+      links
+      value
+    }
+    texteLieuEsprit {
+      blocks
+      links
+      value
+    }
+    texteLieuOu {
+      blocks
+      links
+      value
+    }
+    textePlan {
+      blocks
+      links
+      value
+    }
+    titreGalerie
+    titreHistorique
+    titreIntro
+    titreLieu
+    titrePlan
+    titrePortraits
+    videoIntro {
+      url
+    }
+    videoLieu {
+      url
+    }
+  }
+  ${ImageFragmentDoc}
+`;
 export const GetAllArticlesDocument = gql`
   query getAllArticles {
     allArticles(orderBy: date_DESC) {
@@ -4200,6 +4442,14 @@ export const GetPageApprofondirDocument = gql`
     }
   }
   ${PageApprofondirFragmentDoc}
+`;
+export const GetPageDecouvrirDocument = gql`
+  query getPageDecouvrir {
+    pageDecouvrir {
+      ...PageDecouvrir
+    }
+  }
+  ${PageDecouvrirFragmentDoc}
 `;
 export const GetReglageDocument = gql`
   query getReglage {
@@ -4301,6 +4551,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getPageApprofondir',
+        'query'
+      );
+    },
+    getPageDecouvrir(
+      variables?: GetPageDecouvrirQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPageDecouvrirQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPageDecouvrirQuery>(GetPageDecouvrirDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getPageDecouvrir',
         'query'
       );
     },
