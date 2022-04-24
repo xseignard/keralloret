@@ -1,0 +1,5 @@
+query getPageNewsletter {
+  pageNewsletter {
+    ...PageNewsletter
+  }
+}

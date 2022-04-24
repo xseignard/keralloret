@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 import { ImageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
+import { GalleryImage } from '../GalleryImage';
 
 const P5 = 20;
 
@@ -32,7 +32,7 @@ export const Hero = ({
     <div className="w-full flex items-center flex-col mb-8">
       {width && height && (
         <BlobWrapper growth={0.95} pointCount={16} style={{ width, height }}>
-          <Image
+          <GalleryImage
             src={image.responsiveImage.src}
             layout="fill"
             objectFit="cover"

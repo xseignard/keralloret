@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageApprofondirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { Citation } from '../Citation';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 import { SectionTitle } from '../SectionTitle';
 
 export const ApprofondirCombien = ({
@@ -22,7 +22,7 @@ export const ApprofondirCombien = ({
           <Content data={pageApprofondir.texteCombien} />
         </div>
         <div className="md:w-2/3 mb-8 md:mb-0">
-          <Image
+          <GalleryImage
             src={pageApprofondir.imageCombien.responsiveImage.src}
             width="100%"
             height="100%"

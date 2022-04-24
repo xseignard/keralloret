@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 import { ImageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
+import { GalleryImage } from '../GalleryImage';
 
 export const ArticleImage = ({ image }: { image: ImageFragment }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ export const ArticleImage = ({ image }: { image: ImageFragment }) => {
     <div ref={ref} className="w-full flex items-center">
       {width && height && (
         <BlobWrapper growth={0.95} style={{ width, height }}>
-          <Image
+          <GalleryImage
             src={image.responsiveImage.src}
             layout="fill"
             objectFit="cover"

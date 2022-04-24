@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageDecouvrirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
+import { GalleryImage } from '../GalleryImage';
 import { SectionTitle } from '../SectionTitle';
 
 export const DecouvrirGalerie = ({
@@ -20,7 +20,7 @@ export const DecouvrirGalerie = ({
         {pageDecouvrir.imagesGalerie.map((image, index) => {
           return (
             <BlobWrapper key={index}>
-              <Image
+              <GalleryImage
                 src={image.responsiveImage.src}
                 width="100%"
                 height="100%"

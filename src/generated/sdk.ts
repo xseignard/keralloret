@@ -1816,6 +1816,8 @@ export type InvestirRecord = {
   citation: Maybe<InvestirModelCitationField>;
   createdAt: Scalars['DateTime'];
   id: Scalars['ItemId'];
+  imageDeux: Maybe<FileField>;
+  imageUn: Maybe<FileField>;
   texteInvestir: Maybe<InvestirModelTexteInvestirField>;
   updatedAt: Scalars['DateTime'];
 };
@@ -2687,7 +2689,6 @@ export type ReglageRecord = {
   email: Maybe<Scalars['String']>;
   facebook: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
-  instagram: Maybe<Scalars['String']>;
   investir: Maybe<Scalars['String']>;
   logo: Maybe<FileField>;
   newsletter: Maybe<Scalars['String']>;
@@ -3347,7 +3348,6 @@ export type ReglageFragment = {
   actus: string;
   newsletter: string;
   facebook: string;
-  instagram: string;
   email: string;
   notreNewsletter: string;
   couleur1: { __typename?: 'ColorField'; hex: string };
@@ -3487,6 +3487,28 @@ export type InvestirFragment = {
     blocks: Array<string>;
     links: Array<string>;
     value: Json;
+  };
+  imageUn: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+  imageDeux: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
   };
 };
 
@@ -3730,6 +3752,30 @@ export type PageDecouvrirFragment = {
   videoLieu: { __typename?: 'VideoField'; url: string };
 };
 
+export type PageNewsletterFragment = {
+  __typename?: 'PageNewsletterRecord';
+  titreAbonnement: string;
+  titreArchives: string;
+  listeDeLienDesAnciennesNl: {
+    __typename?: 'PageNewsletterModelListeDeLienDesAnciennesNlField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteAbonnement: {
+    __typename?: 'PageNewsletterModelTexteAbonnementField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  texteDonnees: {
+    __typename?: 'PageNewsletterModelTexteDonneesField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+};
+
 export type GetInvestirQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInvestirQuery = {
@@ -3748,6 +3794,28 @@ export type GetInvestirQuery = {
       blocks: Array<string>;
       links: Array<string>;
       value: Json;
+    };
+    imageUn: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
+    imageDeux: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
     };
   };
 };
@@ -4051,6 +4119,35 @@ export type GetPageDecouvrirQuery = {
   };
 };
 
+export type GetPageNewsletterQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPageNewsletterQuery = {
+  __typename?: 'Query';
+  pageNewsletter: {
+    __typename?: 'PageNewsletterRecord';
+    titreAbonnement: string;
+    titreArchives: string;
+    listeDeLienDesAnciennesNl: {
+      __typename?: 'PageNewsletterModelListeDeLienDesAnciennesNlField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteAbonnement: {
+      __typename?: 'PageNewsletterModelTexteAbonnementField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteDonnees: {
+      __typename?: 'PageNewsletterModelTexteDonneesField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+  };
+};
+
 export type GetReglageQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetReglageQuery = {
@@ -4064,7 +4161,6 @@ export type GetReglageQuery = {
     actus: string;
     newsletter: string;
     facebook: string;
-    instagram: string;
     email: string;
     notreNewsletter: string;
     couleur1: { __typename?: 'ColorField'; hex: string };
@@ -4116,7 +4212,6 @@ export const ReglageFragmentDoc = gql`
     actus
     newsletter
     facebook
-    instagram
     email
     notreNewsletter
   }
@@ -4204,7 +4299,14 @@ export const InvestirFragmentDoc = gql`
       links
       value
     }
+    imageUn {
+      ...Image
+    }
+    imageDeux {
+      ...Image
+    }
   }
+  ${ImageFragmentDoc}
 `;
 export const PalierFragmentDoc = gql`
   fragment Palier on PalierRecord {
@@ -4395,6 +4497,27 @@ export const PageDecouvrirFragmentDoc = gql`
   }
   ${ImageFragmentDoc}
 `;
+export const PageNewsletterFragmentDoc = gql`
+  fragment PageNewsletter on PageNewsletterRecord {
+    listeDeLienDesAnciennesNl {
+      blocks
+      links
+      value
+    }
+    texteAbonnement {
+      blocks
+      links
+      value
+    }
+    texteDonnees {
+      blocks
+      links
+      value
+    }
+    titreAbonnement
+    titreArchives
+  }
+`;
 export const GetAllArticlesDocument = gql`
   query getAllArticles {
     allArticles(orderBy: date_DESC) {
@@ -4450,6 +4573,14 @@ export const GetPageDecouvrirDocument = gql`
     }
   }
   ${PageDecouvrirFragmentDoc}
+`;
+export const GetPageNewsletterDocument = gql`
+  query getPageNewsletter {
+    pageNewsletter {
+      ...PageNewsletter
+    }
+  }
+  ${PageNewsletterFragmentDoc}
 `;
 export const GetReglageDocument = gql`
   query getReglage {
@@ -4565,6 +4696,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getPageDecouvrir',
+        'query'
+      );
+    },
+    getPageNewsletter(
+      variables?: GetPageNewsletterQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPageNewsletterQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPageNewsletterQuery>(GetPageNewsletterDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getPageNewsletter',
         'query'
       );
     },

@@ -34,7 +34,6 @@ export const Footer = ({ reglage }: { reglage: ReglageFragment }) => {
         </div>
         <div className={colStyle}>
           <Link href={reglage.facebook} text="Facebook" />
-          <Link href={reglage.instagram} text="Instagram" />
           <Link href={`mailto:${reglage.email}`} text="Email" />
         </div>
         <div className={`${colStyle} hidden md:flex`}>

@@ -1,11 +1,11 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageDecouvrirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
 import { Citation } from '../Citation';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 import { SectionTitle } from '../SectionTitle';
 
 export const DecouvrirHistorique = ({
@@ -30,7 +30,7 @@ export const DecouvrirHistorique = ({
           />
           <div className="mt-8">
             <BlobWrapper>
-              <Image
+              <GalleryImage
                 src={pageDecouvrir.imageHistorique.responsiveImage.src}
                 width="100%"
                 height="100%"

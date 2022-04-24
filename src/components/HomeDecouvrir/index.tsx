@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageAccueilFragment, ReglageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 import { SectionLink } from '../SectionLink';
 import { SectionTitle } from '../SectionTitle';
 
@@ -21,7 +21,7 @@ export const HomeDecouvrir = ({
       <div className="flex flex-col md:flex-row md:items-center">
         <div className="md:w-2/3">
           <BlobWrapper>
-            <Image
+            <GalleryImage
               src={pageAccueil.imageDecouvrir.responsiveImage.src}
               width="100%"
               height="100%"

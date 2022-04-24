@@ -20,14 +20,21 @@ import { getApi } from '~/utils/api';
 
 const debug = false;
 
-const ArticleLink = ({ article, text }: { article: ArticleRecord; text: string }) => {
+const ArticleLink = ({
+  article,
+  text,
+  leftRight,
+}: {
+  article: ArticleRecord;
+  text: string;
+  leftRight: 'left' | 'right';
+}) => {
   return (
     <Link href={`/actu/${article.id}`} passHref>
       <motion.a whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
-        <div className="flex flex-col items-center justify-between w-full md:w-80 h-full">
-          <h3 className="font-other">{text}</h3>
-          <ArticleImage image={article.image} />
-          <h3 className="font-other">{article.titre}</h3>
+        <div className={`flex flex-col prose text-${leftRight}`}>
+          <span className="font-other text-sm">{text}</span>
+          <span className="font-other text-base font-bold">{article.titre}</span>
         </div>
       </motion.a>
     </Link>
@@ -62,10 +69,10 @@ const ArticlePage: NextPage<{
       <SectionWrapper width="article" debug={debug}>
         <div className="flex flex-col">
           <h1 className="text-xl md:text-xl font-other font-bold mb-2">{article.titre}</h1>
-          <span className="prose prose-sm mb-4 font-prose self-start">
+          <span className="prose mb-4 font-prose self-start">
             {format(parseISO(article.date), 'dd MMMM yyyy', { locale: frLocale })}
           </span>
-          <Content data={article.texte} className="prose font-prose mb-8" />
+          <Content data={article.texte} />
         </div>
       </SectionWrapper>
       <SectionWrapper width="article" debug={debug}>
@@ -75,10 +82,18 @@ const ArticlePage: NextPage<{
           })}
         </div>
       </SectionWrapper>
-      <SectionWrapper debug={debug}>
-        <div className="flex flex-col md:flex-row md:justify-around gap-4">
-          {prevArticle ? <ArticleLink article={prevArticle} text="Actu précédente" /> : <div />}
-          {nextArticle ? <ArticleLink article={nextArticle} text="Actu suivante" /> : <div />}
+      <SectionWrapper width="article" debug={debug}>
+        <div className="flex flex-col md:flex-row md:justify-between">
+          {prevArticle ? (
+            <ArticleLink article={prevArticle} text="Actu précédente" leftRight="left" />
+          ) : (
+            <div />
+          )}
+          {nextArticle ? (
+            <ArticleLink article={nextArticle} text="Actu suivante" leftRight="right" />
+          ) : (
+            <div />
+          )}
         </div>
       </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>

@@ -30,7 +30,6 @@ fragment Reglage on ReglageRecord {
   newsletter
   #contacts
   facebook
-  instagram
   email
   notreNewsletter
 }
@@ -112,6 +111,12 @@ fragment Investir on InvestirRecord {
     blocks
     links
     value
+  }
+  imageUn {
+    ...Image
+  }
+  imageDeux {
+    ...Image
   }
 }
 
@@ -295,4 +300,24 @@ fragment PageDecouvrir on PageDecouvrirRecord {
   videoLieu {
     url
   }
+}
+
+fragment PageNewsletter on PageNewsletterRecord {
+  listeDeLienDesAnciennesNl {
+    blocks
+    links
+    value
+  }
+  texteAbonnement {
+    blocks
+    links
+    value
+  }
+  texteDonnees {
+    blocks
+    links
+    value
+  }
+  titreAbonnement
+  titreArchives
 }

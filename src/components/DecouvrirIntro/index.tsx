@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 import ReactPlayer from 'react-player';
 
@@ -8,6 +7,7 @@ import { PageDecouvrirFragment, ReglageFragment } from '~/generated/sdk';
 import { BlobWrapper } from '../BlobWrapper';
 import { Citation } from '../Citation';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 import { SectionTitle } from '../SectionTitle';
 
 export const DecouvrirIntro = ({
@@ -24,7 +24,7 @@ export const DecouvrirIntro = ({
         <div className="md:w-2/3 mt-8 md:mt-0 mb-8 md:mb-0">
           <div className="mb-8">
             <BlobWrapper>
-              <Image
+              <GalleryImage
                 src={pageDecouvrir.imageIntro.responsiveImage.src}
                 width="100%"
                 height="100%"

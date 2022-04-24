@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageApprofondirFragment, ReglageFragment } from '~/generated/sdk';
 
 import { BlobWrapper } from '../BlobWrapper';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 import { SectionTitle } from '../SectionTitle';
 
 export const ApprofondirCopains = ({
@@ -23,7 +23,7 @@ export const ApprofondirCopains = ({
         </div>
         <div className="md:w-2/3">
           <BlobWrapper>
-            <Image
+            <GalleryImage
               src={pageApprofondir.imageCopains.responsiveImage.src}
               width="100%"
               height="100%"

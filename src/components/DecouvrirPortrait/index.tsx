@@ -1,11 +1,11 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { PageDecouvrirFragment } from '~/generated/sdk';
 import { useIsMobile } from '~/hooks/useIsMobile';
 
 import { BlobWrapper } from '../BlobWrapper';
 import { Content } from '../Content';
+import { GalleryImage } from '../GalleryImage';
 
 export const DecouvrirPortrait = ({
   portrait,
@@ -17,7 +17,7 @@ export const DecouvrirPortrait = ({
     <div className="flex-1 -mb-16">
       <div className="relative z-10">
         <BlobWrapper>
-          <Image
+          <GalleryImage
             src={portrait.imagePortrait.responsiveImage.src}
             width="100%"
             height="100%"
