@@ -11,12 +11,11 @@ import { DecouvrirPortraits } from '~/components/DecouvrirPortraits';
 import { Footer } from '~/components/Footer';
 import { HomeCagnotte } from '~/components/HomeCagnotte';
 import { Nav } from '~/components/Nav';
-import { SectionTitle } from '~/components/SectionTitle';
 import { SectionWrapper } from '~/components/SectionWrapper';
 import { CagnotteRecord, PageDecouvrirRecord, ReglageRecord } from '~/generated/sdk';
 import { getApi } from '~/utils/api';
 
-const debug = true;
+const debug = false;
 
 const Decouvrir: NextPage<{
   pageDecouvrir: PageDecouvrirRecord;
@@ -33,9 +32,6 @@ const Decouvrir: NextPage<{
 
       <SectionWrapper debug={debug}>
         <Nav reglage={reglage} />
-      </SectionWrapper>
-      <SectionWrapper debug={debug}>
-        <SectionTitle text="Découvrir" color={reglage.couleur1.hex} />
       </SectionWrapper>
       <SectionWrapper debug={debug}>
         <DecouvrirIntro reglage={reglage} pageDecouvrir={pageDecouvrir} />

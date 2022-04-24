@@ -34,9 +34,6 @@ const Approfondir: NextPage<{
         <Nav reglage={reglage} />
       </SectionWrapper>
       <SectionWrapper debug={debug}>
-        <SectionTitle text="Approfondir" color={reglage.couleur1.hex} />
-      </SectionWrapper>
-      <SectionWrapper debug={debug}>
         <ApprofondirGouvernance reglage={reglage} pageApprofondir={pageApprofondir} />
       </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>

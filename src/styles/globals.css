@@ -18,3 +18,7 @@ a {
 .nav-height {
   max-height: 96px;
 }
+
+.dato-content li > p {
+  margin: 0;
+}

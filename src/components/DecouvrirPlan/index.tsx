@@ -16,21 +16,7 @@ export const DecouvrirPlan = ({
   return (
     <div className="flex flex-col">
       <SectionTitle text={pageDecouvrir.titrePlan} color={reglage.couleur1.hex} />
-      <div className="flex flex-col md:flex-row md:items-start">
-        <div className="flex-1 mb-4 md:mb-0 md:mr-4">
-          <Image
-            src={pageDecouvrir.imagePlan.responsiveImage.src}
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-            alt={pageDecouvrir.imagePlan.responsiveImage.alt}
-          />
-        </div>
-        <div className="flex-1">
-          <Content data={pageDecouvrir.textePlan} />
-        </div>
-      </div>
+      <Content data={pageDecouvrir.textePlan} />
     </div>
   );
 };

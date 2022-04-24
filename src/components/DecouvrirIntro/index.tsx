@@ -1,7 +1,9 @@
 import React from 'react';
+import Image from 'next/image';
 
 import { PageDecouvrirFragment, ReglageFragment } from '~/generated/sdk';
 
+import { BlobWrapper } from '../BlobWrapper';
 import { Citation } from '../Citation';
 import { Content } from '../Content';
 import { SectionTitle } from '../SectionTitle';
@@ -16,8 +18,20 @@ export const DecouvrirIntro = ({
   return (
     <div className="flex flex-col">
       <SectionTitle text={pageDecouvrir.titreIntro} color={reglage.couleur1.hex} />
-      <div className="flex flex-col md:flex-row md:items-center">
+      <div className="flex flex-col md:flex-row md:items-start">
         <div className="md:w-2/3 mt-8 md:mt-0 mb-8 md:mb-0">
+          <div className="mb-8">
+            <BlobWrapper>
+              <Image
+                src={pageDecouvrir.imageIntro.responsiveImage.src}
+                width="100%"
+                height="100%"
+                layout="responsive"
+                objectFit="cover"
+                alt={pageDecouvrir.imageIntro.responsiveImage.alt}
+              />
+            </BlobWrapper>
+          </div>
           <Citation
             auteur={pageDecouvrir.auteurCitationIntro}
             citation={pageDecouvrir.citationIntro}

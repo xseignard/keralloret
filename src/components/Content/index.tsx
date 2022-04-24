@@ -1,5 +1,6 @@
 import React from 'react';
 
+import classNames from 'classnames';
 import { StructuredText } from 'react-datocms';
 
 import { Json } from '~/generated/dato-scalars';
@@ -20,7 +21,7 @@ export const Content = ({
   style?: React.CSSProperties;
 }) => {
   return (
-    <div className={className} style={style}>
+    <div className={classNames('dato-content', className)} style={style}>
       <StructuredText
         // @ts-expect-error umatched types
         data={data}

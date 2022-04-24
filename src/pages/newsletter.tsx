@@ -27,9 +27,6 @@ const Newsletter: NextPage<{
       <SectionWrapper debug={debug}>
         <Nav reglage={reglage} />
       </SectionWrapper>
-      <SectionWrapper debug={debug}>
-        <SectionTitle text="Newsletter" color={reglage.couleur1.hex} />
-      </SectionWrapper>
       <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
         <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
       </SectionWrapper>

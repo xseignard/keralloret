@@ -14,18 +14,15 @@ export const InvestirContent = ({
   investir: InvestirFragment;
 }) => {
   return (
-    <div className="flex flex-col">
-      <SectionTitle text="Investir" color={reglage.couleur1.hex} />
-      <div className="flex flex-col md:items-center">
-        <div className="mt-8 mb-8 md:mb-16 md:w-2/3">
-          <Citation
-            auteur={investir.auteurCitation}
-            citation={investir.citation}
-            color={reglage.couleur1.hex}
-          />
-        </div>
-        <Content data={investir.texteInvestir} />
+    <div className="flex flex-col md:items-center">
+      <div className="mt-8 md:mt-16 mb-8 md:mb-16 md:w-2/3">
+        <Citation
+          auteur={investir.auteurCitation}
+          citation={investir.citation}
+          color={reglage.couleur1.hex}
+        />
       </div>
+      <Content data={investir.texteInvestir} />
     </div>
   );
 };

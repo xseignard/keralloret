@@ -2186,8 +2186,8 @@ export type PageDecouvrirRecord = {
   gpsLieu: Maybe<LatLonField>;
   id: Scalars['ItemId'];
   imageHistorique: Maybe<FileField>;
+  imageIntro: Maybe<FileField>;
   imageLieu: Maybe<FileField>;
-  imagePlan: Maybe<FileField>;
   imagesGalerie: Array<FileField>;
   portraits: Array<PortraitRecord>;
   texteHistorique: Maybe<PageDecouvrirModelTexteHistoriqueField>;
@@ -3663,7 +3663,7 @@ export type PageDecouvrirFragment = {
       alt: string;
     };
   }>;
-  imagePlan: {
+  imageIntro: {
     __typename?: 'FileField';
     responsiveImage: {
       __typename?: 'ResponsiveImage';
@@ -3983,7 +3983,7 @@ export type GetPageDecouvrirQuery = {
         alt: string;
       };
     }>;
-    imagePlan: {
+    imageIntro: {
       __typename?: 'FileField';
       responsiveImage: {
         __typename?: 'ResponsiveImage';
@@ -4340,7 +4340,7 @@ export const PageDecouvrirFragmentDoc = gql`
     imagesGalerie {
       ...Image
     }
-    imagePlan {
+    imageIntro {
       ...Image
     }
     portraits {
