@@ -2213,6 +2213,34 @@ export type PageDecouvrirRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
+/** Record of type Page FAQ/Lexique (page_faq_lexique) */
+export type PageFaqLexiqueRecord = {
+  __typename?: 'PageFaqLexiqueRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt: Maybe<Scalars['DateTime']>;
+  _publishedAt: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+  listeFaq: Array<FaqRecord>;
+  listeLexique: Array<LexiqueRecord>;
+  titreFaq: Maybe<Scalars['String']>;
+  titreLexique: Maybe<Scalars['String']>;
+  updatedAt: Scalars['DateTime'];
+};
+
+/** Record of type Page FAQ/Lexique (page_faq_lexique) */
+export type PageFaqLexiqueRecord_SeoMetaTagsArgs = {
+  locale: InputMaybe<SiteLocale>;
+};
+
 export type PageMentionsContactModelTexteContactField = {
   __typename?: 'PageMentionsContactModelTexteContactField';
   blocks: Array<Scalars['String']>;
@@ -2475,6 +2503,8 @@ export type Query = {
   /** Returns the single instance record */
   pageDecouvrir: Maybe<PageDecouvrirRecord>;
   /** Returns the single instance record */
+  pageFaqLexique: Maybe<PageFaqLexiqueRecord>;
+  /** Returns the single instance record */
   pageMentionsContact: Maybe<PageMentionsContactRecord>;
   /** Returns the single instance record */
   pageNewsletter: Maybe<PageNewsletterRecord>;
@@ -2626,6 +2656,12 @@ export type QueryPageApprofondirArgs = {
 
 /** The query root for this schema */
 export type QueryPageDecouvrirArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+/** The query root for this schema */
+export type QueryPageFaqLexiqueArgs = {
   fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
@@ -3776,6 +3812,61 @@ export type PageNewsletterFragment = {
   };
 };
 
+export type FaqFragment = {
+  __typename?: 'FaqRecord';
+  question: string;
+  reponse: {
+    __typename?: 'FaqModelReponseField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+};
+
+export type LexiqueFragment = {
+  __typename?: 'LexiqueRecord';
+  notion: string;
+  definition: {
+    __typename?: 'LexiqueModelDefinitionField';
+    blocks: Array<string>;
+    value: Json;
+    links: Array<string>;
+  };
+};
+
+export type MentionsFragment = {
+  __typename?: 'PageMentionsContactRecord';
+  titreMentions: string;
+  texteMentions: {
+    __typename?: 'PageMentionsContactModelTexteMentionsField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+};
+
+export type ContactFragment = {
+  __typename?: 'PageMentionsContactRecord';
+  titreContact: string;
+  texteContact: {
+    __typename?: 'PageMentionsContactModelTexteContactField';
+    blocks: Array<string>;
+    links: Array<string>;
+    value: Json;
+  };
+  imageContact: {
+    __typename?: 'FileField';
+    responsiveImage: {
+      __typename?: 'ResponsiveImage';
+      src: string;
+      height: number;
+      width: number;
+      aspectRatio: number;
+      alt: string;
+    };
+  };
+};
+
 export type GetInvestirQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetInvestirQuery = {
@@ -4116,6 +4207,71 @@ export type GetPageDecouvrirQuery = {
     };
     videoIntro: { __typename?: 'VideoField'; url: string };
     videoLieu: { __typename?: 'VideoField'; url: string };
+  };
+};
+
+export type GetPageFaqLexiqueQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPageFaqLexiqueQuery = {
+  __typename?: 'Query';
+  pageFaqLexique: {
+    __typename?: 'PageFaqLexiqueRecord';
+    titreFaq: string;
+    titreLexique: string;
+    listeFaq: Array<{
+      __typename?: 'FaqRecord';
+      question: string;
+      reponse: {
+        __typename?: 'FaqModelReponseField';
+        blocks: Array<string>;
+        links: Array<string>;
+        value: Json;
+      };
+    }>;
+    listeLexique: Array<{
+      __typename?: 'LexiqueRecord';
+      notion: string;
+      definition: {
+        __typename?: 'LexiqueModelDefinitionField';
+        blocks: Array<string>;
+        value: Json;
+        links: Array<string>;
+      };
+    }>;
+  };
+};
+
+export type GetPageMentionsContactQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPageMentionsContactQuery = {
+  __typename?: 'Query';
+  pageMentionsContact: {
+    __typename?: 'PageMentionsContactRecord';
+    titreMentions: string;
+    titreContact: string;
+    texteMentions: {
+      __typename?: 'PageMentionsContactModelTexteMentionsField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    texteContact: {
+      __typename?: 'PageMentionsContactModelTexteContactField';
+      blocks: Array<string>;
+      links: Array<string>;
+      value: Json;
+    };
+    imageContact: {
+      __typename?: 'FileField';
+      responsiveImage: {
+        __typename?: 'ResponsiveImage';
+        src: string;
+        height: number;
+        width: number;
+        aspectRatio: number;
+        alt: string;
+      };
+    };
   };
 };
 
@@ -4518,6 +4674,50 @@ export const PageNewsletterFragmentDoc = gql`
     titreArchives
   }
 `;
+export const FaqFragmentDoc = gql`
+  fragment Faq on FaqRecord {
+    question
+    reponse {
+      blocks
+      links
+      value
+    }
+  }
+`;
+export const LexiqueFragmentDoc = gql`
+  fragment Lexique on LexiqueRecord {
+    notion
+    definition {
+      blocks
+      value
+      links
+    }
+  }
+`;
+export const MentionsFragmentDoc = gql`
+  fragment Mentions on PageMentionsContactRecord {
+    titreMentions
+    texteMentions {
+      blocks
+      links
+      value
+    }
+  }
+`;
+export const ContactFragmentDoc = gql`
+  fragment Contact on PageMentionsContactRecord {
+    titreContact
+    texteContact {
+      blocks
+      links
+      value
+    }
+    imageContact {
+      ...Image
+    }
+  }
+  ${ImageFragmentDoc}
+`;
 export const GetAllArticlesDocument = gql`
   query getAllArticles {
     allArticles(orderBy: date_DESC) {
@@ -4573,6 +4773,32 @@ export const GetPageDecouvrirDocument = gql`
     }
   }
   ${PageDecouvrirFragmentDoc}
+`;
+export const GetPageFaqLexiqueDocument = gql`
+  query getPageFaqLexique {
+    pageFaqLexique {
+      titreFaq
+      listeFaq {
+        ...Faq
+      }
+      titreLexique
+      listeLexique {
+        ...Lexique
+      }
+    }
+  }
+  ${FaqFragmentDoc}
+  ${LexiqueFragmentDoc}
+`;
+export const GetPageMentionsContactDocument = gql`
+  query getPageMentionsContact {
+    pageMentionsContact {
+      ...Mentions
+      ...Contact
+    }
+  }
+  ${MentionsFragmentDoc}
+  ${ContactFragmentDoc}
 `;
 export const GetPageNewsletterDocument = gql`
   query getPageNewsletter {
@@ -4696,6 +4922,34 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'getPageDecouvrir',
+        'query'
+      );
+    },
+    getPageFaqLexique(
+      variables?: GetPageFaqLexiqueQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPageFaqLexiqueQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPageFaqLexiqueQuery>(GetPageFaqLexiqueDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getPageFaqLexique',
+        'query'
+      );
+    },
+    getPageMentionsContact(
+      variables?: GetPageMentionsContactQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetPageMentionsContactQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetPageMentionsContactQuery>(GetPageMentionsContactDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getPageMentionsContact',
         'query'
       );
     },

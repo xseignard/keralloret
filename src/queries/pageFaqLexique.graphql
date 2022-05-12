@@ -1,0 +1,12 @@
+query getPageFaqLexique {
+  pageFaqLexique {
+    titreFaq
+    listeFaq {
+      ...Faq
+    }
+    titreLexique
+    listeLexique {
+      ...Lexique
+    }
+  }
+}

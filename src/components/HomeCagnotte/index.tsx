@@ -19,13 +19,12 @@ const Palier = ({
 }) => {
   return (
     <div
-      className={`absolute w-fit flex ${top ? '-top-[84px] flex-col-reverse' : 'flex-col'}`}
+      className={`absolute flex ${top ? '-top-[56px] flex-col-reverse' : 'flex-col'}`}
       style={{ left: `calc(${(palier.montant / objectif) * 100}% - ${last ? '24px' : '0px'})` }}
     >
       <div className="w-0.5 h-6" style={{ backgroundColor: color }} />
       <div className="flex flex-col transform -translate-x-1/2 text-center font-prose mt-1 font-bold">
         <span>{palier.montant}€</span>
-        <span className="w-full">{palier.description}</span>
       </div>
     </div>
   );
@@ -39,7 +38,7 @@ export const HomeCagnotte = ({
   cagnotte: CagnotteFragment;
 }) => {
   return (
-    <div className="mb-4 md:mb-24">
+    <div>
       <SectionTitle text="La cagnotte en cours" color={reglage.couleur1.hex} />
       <div className="relative">
         <div
@@ -71,7 +70,7 @@ export const HomeCagnotte = ({
             );
           })}
         </div>
-        <div className="prose block md:hidden mt-4">
+        <div className="prose mt-8 md:mt-16">
           <ul>
             {cagnotte.paliers.map((palier, index) => {
               return (

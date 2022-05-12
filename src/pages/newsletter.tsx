@@ -31,14 +31,12 @@ const Newsletter: NextPage<{
       <SectionWrapper debug={debug}>
         <NewsletterContent reglage={reglage} pageNewsletter={pageNewsletter} />
       </SectionWrapper>
-      <div className="absolute bottom-0">
-        <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
-          <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
-        </SectionWrapper>
-        <SectionWrapper backgroundColor={reglage.couleur1.hex} debug={debug}>
-          <Footer reglage={reglage} />
-        </SectionWrapper>
-      </div>
+      <SectionWrapper backgroundColor={reglage.couleur2.hex} debug={debug}>
+        <HomeCagnotte reglage={reglage} cagnotte={cagnotte} />
+      </SectionWrapper>
+      <SectionWrapper backgroundColor={reglage.couleur1.hex} debug={debug}>
+        <Footer reglage={reglage} />
+      </SectionWrapper>
     </div>
   );
 };

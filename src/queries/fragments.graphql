@@ -321,3 +321,43 @@ fragment PageNewsletter on PageNewsletterRecord {
   titreAbonnement
   titreArchives
 }
+
+
+fragment Faq on FaqRecord {
+  question
+  reponse {
+    blocks
+    links
+    value
+  }
+}
+
+fragment Lexique on LexiqueRecord {
+  notion
+  definition {
+    blocks
+    value
+    links
+  }
+}
+
+fragment Mentions on PageMentionsContactRecord {
+  titreMentions
+  texteMentions {
+    blocks
+    links
+    value
+  }
+}
+
+fragment Contact on PageMentionsContactRecord {
+  titreContact
+  texteContact {
+    blocks
+    links
+    value
+  }
+  imageContact {
+    ...Image
+  }
+}

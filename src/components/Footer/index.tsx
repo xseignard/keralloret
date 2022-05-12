@@ -29,8 +29,8 @@ export const Footer = ({ reglage }: { reglage: ReglageFragment }) => {
       <div className="flex flex-col-reverse md:flex-row mb-4">
         <div className={colStyle}>
           <Link href="/faq" text="FAQ" />
-          <Link href="/contact" text="Contact" />
-          <Link href="/mentions" text="Mentions légales" />
+          <Link href="/contact#contact" text="Contact" />
+          <Link href="/contact#mentions" text="Mentions légales" />
         </div>
         <div className={colStyle}>
           <Link href={reglage.facebook} text="Facebook" />
