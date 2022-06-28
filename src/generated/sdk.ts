@@ -108,7 +108,7 @@ export type ArticleModelTexteField = {
 };
 
 /** Record of type Article du blog (article) */
-export type ArticleRecord = {
+export type ArticleRecord = RecordInterface & {
   __typename?: 'ArticleRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -152,8 +152,8 @@ export type CagnotteModelTexteField = {
   value: Scalars['JsonField'];
 };
 
-/** Record of type Cagnotte (cagnotte) */
-export type CagnotteRecord = {
+/** Record of type Appel à contribution !  (cagnotte) */
+export type CagnotteRecord = RecordInterface & {
   __typename?: 'CagnotteRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -172,10 +172,11 @@ export type CagnotteRecord = {
   objectif: Maybe<Scalars['IntType']>;
   paliers: Array<PalierRecord>;
   texte: Maybe<CagnotteModelTexteField>;
+  titre: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
-/** Record of type Cagnotte (cagnotte) */
+/** Record of type Appel à contribution !  (cagnotte) */
 export type CagnotteRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
@@ -202,11 +203,11 @@ export enum ColorBucketType {
 
 export type ColorField = {
   __typename?: 'ColorField';
-  alpha: Maybe<Scalars['IntType']>;
-  blue: Maybe<Scalars['IntType']>;
-  green: Maybe<Scalars['IntType']>;
-  hex: Maybe<Scalars['String']>;
-  red: Maybe<Scalars['IntType']>;
+  alpha: Scalars['IntType'];
+  blue: Scalars['IntType'];
+  green: Scalars['IntType'];
+  hex: Scalars['String'];
+  red: Scalars['IntType'];
 };
 
 /** Specifies how to filter by creation datetime */
@@ -297,7 +298,7 @@ export type FaqModelReponseField = {
 };
 
 /** Record of type Article FAQ (faq) */
-export type FaqRecord = {
+export type FaqRecord = RecordInterface & {
   __typename?: 'FaqRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -328,7 +329,7 @@ export enum FaviconType {
   msApplication = 'msApplication',
 }
 
-export type FileField = {
+export type FileField = FileFieldInterface & {
   __typename?: 'FileField';
   _createdAt: Scalars['DateTime'];
   _updatedAt: Scalars['DateTime'];
@@ -337,10 +338,10 @@ export type FileField = {
   basename: Scalars['String'];
   blurUpThumb: Maybe<Scalars['String']>;
   blurhash: Maybe<Scalars['String']>;
-  colors: Array<Maybe<ColorField>>;
+  colors: Array<ColorField>;
   copyright: Maybe<Scalars['String']>;
-  customData: Maybe<Scalars['CustomData']>;
-  exifInfo: Maybe<Scalars['CustomData']>;
+  customData: Scalars['CustomData'];
+  exifInfo: Scalars['CustomData'];
   filename: Scalars['String'];
   focalPoint: Maybe<FocalPoint>;
   format: Scalars['String'];
@@ -351,8 +352,8 @@ export type FileField = {
   notes: Maybe<Scalars['String']>;
   responsiveImage: Maybe<ResponsiveImage>;
   size: Scalars['IntType'];
-  smartTags: Array<Maybe<Scalars['String']>>;
-  tags: Array<Maybe<Scalars['String']>>;
+  smartTags: Array<Scalars['String']>;
+  tags: Array<Scalars['String']>;
   title: Maybe<Scalars['String']>;
   url: Scalars['String'];
   video: Maybe<UploadVideoField>;
@@ -394,6 +395,74 @@ export type FileFieldTitleArgs = {
 };
 
 export type FileFieldUrlArgs = {
+  imgixParams: InputMaybe<ImgixParams>;
+};
+
+export type FileFieldInterface = {
+  _createdAt: Scalars['DateTime'];
+  _updatedAt: Scalars['DateTime'];
+  alt: Maybe<Scalars['String']>;
+  author: Maybe<Scalars['String']>;
+  basename: Scalars['String'];
+  blurUpThumb: Maybe<Scalars['String']>;
+  blurhash: Maybe<Scalars['String']>;
+  colors: Array<ColorField>;
+  copyright: Maybe<Scalars['String']>;
+  customData: Scalars['CustomData'];
+  exifInfo: Scalars['CustomData'];
+  filename: Scalars['String'];
+  focalPoint: Maybe<FocalPoint>;
+  format: Scalars['String'];
+  height: Maybe<Scalars['IntType']>;
+  id: Scalars['UploadId'];
+  md5: Scalars['String'];
+  mimeType: Scalars['String'];
+  notes: Maybe<Scalars['String']>;
+  responsiveImage: Maybe<ResponsiveImage>;
+  size: Scalars['IntType'];
+  smartTags: Array<Scalars['String']>;
+  tags: Array<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+  url: Scalars['String'];
+  video: Maybe<UploadVideoField>;
+  width: Maybe<Scalars['IntType']>;
+};
+
+export type FileFieldInterfaceAltArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+export type FileFieldInterfaceBlurUpThumbArgs = {
+  imgixParams: InputMaybe<ImgixParams>;
+  punch?: InputMaybe<Scalars['Float']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
+};
+
+export type FileFieldInterfaceCustomDataArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+export type FileFieldInterfaceFocalPointArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+export type FileFieldInterfaceResponsiveImageArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  imgixParams: InputMaybe<ImgixParams>;
+  locale: InputMaybe<SiteLocale>;
+  sizes: InputMaybe<Scalars['String']>;
+};
+
+export type FileFieldInterfaceTitleArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+export type FileFieldInterfaceUrlArgs = {
   imgixParams: InputMaybe<ImgixParams>;
 };
 
@@ -1564,6 +1633,26 @@ export type ImgixParams = {
    */
   txtWidth: InputMaybe<Scalars['IntType']>;
   /**
+   * Text X Position
+   *
+   * Sets the horizontal (x) position of the text in pixels relative to the left edge of the base image.
+   *
+   * Depends on: `txt`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-x)
+   */
+  txtX: InputMaybe<Scalars['IntType']>;
+  /**
+   * Text Y Position
+   *
+   * Sets the vertical (y) position of the text in pixels relative to the top edge of the base image.
+   *
+   * Depends on: `txt`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-y)
+   */
+  txtY: InputMaybe<Scalars['IntType']>;
+  /**
    * Unsharp Mask
    *
    * Sharpens the source image using an unsharp mask.
@@ -1799,7 +1888,7 @@ export type InvestirModelTexteInvestirField = {
 };
 
 /** Record of type Investir (investir) */
-export type InvestirRecord = {
+export type InvestirRecord = RecordInterface & {
   __typename?: 'InvestirRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -1847,8 +1936,8 @@ export enum ItemStatus {
 
 export type LatLonField = {
   __typename?: 'LatLonField';
-  latitude: Maybe<Scalars['FloatType']>;
-  longitude: Maybe<Scalars['FloatType']>;
+  latitude: Scalars['FloatType'];
+  longitude: Scalars['FloatType'];
 };
 
 export type LexiqueModelDefinitionField = {
@@ -1903,7 +1992,7 @@ export enum LexiqueModelOrderBy {
 }
 
 /** Record of type Article Lexique (lexique) */
-export type LexiqueRecord = {
+export type LexiqueRecord = RecordInterface & {
   __typename?: 'LexiqueRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -1978,7 +2067,7 @@ export type PageAccueilModelPresentationField = {
 };
 
 /** Record of type Page accueil (page_accueil) */
-export type PageAccueilRecord = {
+export type PageAccueilRecord = RecordInterface & {
   __typename?: 'PageAccueilRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2061,7 +2150,7 @@ export type PageApprofondirModelTexteMontageField = {
 };
 
 /** Record of type Page Approfondir (page_approfondir) */
-export type PageApprofondirRecord = {
+export type PageApprofondirRecord = RecordInterface & {
   __typename?: 'PageApprofondirRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2167,7 +2256,7 @@ export type PageDecouvrirModelTextePlanField = {
 };
 
 /** Record of type Page Découvrir (page_decouvrir) */
-export type PageDecouvrirRecord = {
+export type PageDecouvrirRecord = RecordInterface & {
   __typename?: 'PageDecouvrirRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2214,7 +2303,7 @@ export type PageDecouvrirRecord_SeoMetaTagsArgs = {
 };
 
 /** Record of type Page FAQ/Lexique (page_faq_lexique) */
-export type PageFaqLexiqueRecord = {
+export type PageFaqLexiqueRecord = RecordInterface & {
   __typename?: 'PageFaqLexiqueRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2256,7 +2345,7 @@ export type PageMentionsContactModelTexteMentionsField = {
 };
 
 /** Record of type Page Mentions & contact (page_mentions_contact) */
-export type PageMentionsContactRecord = {
+export type PageMentionsContactRecord = RecordInterface & {
   __typename?: 'PageMentionsContactRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2306,7 +2395,7 @@ export type PageNewsletterModelTexteDonneesField = {
 };
 
 /** Record of type Page Newsletter (page_newsletter) */
-export type PageNewsletterRecord = {
+export type PageNewsletterRecord = RecordInterface & {
   __typename?: 'PageNewsletterRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2334,8 +2423,8 @@ export type PageNewsletterRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
-/** Record of type Palier (palier) */
-export type PalierRecord = {
+/** Block of type Palier (palier) */
+export type PalierRecord = RecordInterface & {
   __typename?: 'PalierRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2355,7 +2444,7 @@ export type PalierRecord = {
   updatedAt: Scalars['DateTime'];
 };
 
-/** Record of type Palier (palier) */
+/** Block of type Palier (palier) */
 export type PalierRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
@@ -2416,7 +2505,7 @@ export type PortraitModelTextePortraitField = {
 };
 
 /** Record of type Portrait (portrait) */
-export type PortraitRecord = {
+export type PortraitRecord = RecordInterface & {
   __typename?: 'PortraitRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -2700,8 +2789,27 @@ export type QueryUploadArgs = {
   orderBy?: InputMaybe<Array<InputMaybe<UploadOrderBy>>>;
 };
 
+export type RecordInterface = {
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt: Maybe<Scalars['DateTime']>;
+  _publishedAt: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+};
+
+export type RecordInterface_SeoMetaTagsArgs = {
+  locale: InputMaybe<SiteLocale>;
+};
+
 /** Record of type Réglages généraux (reglage) */
-export type ReglageRecord = {
+export type ReglageRecord = RecordInterface & {
   __typename?: 'ReglageRecord';
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
@@ -3122,15 +3230,15 @@ export type UploadSizeFilter = {
 /** Specifies how to filter by tags */
 export type UploadTagsFilter = {
   /** Filter uploads linked to all of the specified tags */
-  allIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  allIn: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads linked to at least one of the specified tags */
-  anyIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  anyIn: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads linked to the specified tag */
   contains: InputMaybe<Scalars['String']>;
   /** Search for uploads with an exact match */
-  eq: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  eq: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads not linked to any of the specified tags */
-  notIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  notIn: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** Specifies how to filter by default title */
@@ -3180,8 +3288,8 @@ export type UploadUpdatedAtFilter = {
 
 export type UploadVideoField = {
   __typename?: 'UploadVideoField';
-  duration: Scalars['Int'];
-  framerate: Scalars['Int'];
+  duration: Maybe<Scalars['Int']>;
+  framerate: Maybe<Scalars['Int']>;
   mp4Url: Maybe<Scalars['String']>;
   muxAssetId: Scalars['String'];
   muxPlaybackId: Scalars['String'];
@@ -3216,13 +3324,13 @@ export type UploadWidthFilter = {
 
 export type VideoField = {
   __typename?: 'VideoField';
-  height: Maybe<Scalars['IntType']>;
-  provider: Maybe<Scalars['String']>;
-  providerUid: Maybe<Scalars['String']>;
-  thumbnailUrl: Maybe<Scalars['String']>;
-  title: Maybe<Scalars['String']>;
-  url: Maybe<Scalars['String']>;
-  width: Maybe<Scalars['IntType']>;
+  height: Scalars['IntType'];
+  provider: Scalars['String'];
+  providerUid: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
+  title: Scalars['String'];
+  url: Scalars['String'];
+  width: Scalars['IntType'];
 };
 
 export enum VideoMp4Res {
@@ -3233,8 +3341,8 @@ export enum VideoMp4Res {
 
 export type FocalPoint = {
   __typename?: 'focalPoint';
-  x: Maybe<Scalars['FloatType']>;
-  y: Maybe<Scalars['FloatType']>;
+  x: Scalars['FloatType'];
+  y: Scalars['FloatType'];
 };
 
 export type GetAllArticlesQueryVariables = Exact<{ [key: string]: never }>;
@@ -3351,6 +3459,7 @@ export type GetCagnotteQuery = {
   __typename?: 'Query';
   cagnotte: {
     __typename?: 'CagnotteRecord';
+    titre: string;
     objectif: number;
     aujourdhui: number;
     texte: {
@@ -3552,6 +3661,7 @@ export type PalierFragment = { __typename?: 'PalierRecord'; montant: number; des
 
 export type CagnotteFragment = {
   __typename?: 'CagnotteRecord';
+  titre: string;
   objectif: number;
   aujourdhui: number;
   texte: {
@@ -4472,6 +4582,7 @@ export const PalierFragmentDoc = gql`
 `;
 export const CagnotteFragmentDoc = gql`
   fragment Cagnotte on CagnotteRecord {
+    titre
     objectif
     aujourdhui
     texte {

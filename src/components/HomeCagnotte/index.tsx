@@ -2,6 +2,7 @@ import React from 'react';
 
 import { CagnotteFragment, PalierFragment, ReglageFragment } from '~/generated/sdk';
 
+import { Content } from '../Content';
 import { SectionTitle } from '../SectionTitle';
 
 const Palier = ({
@@ -39,12 +40,16 @@ export const HomeCagnotte = ({
 }) => {
   return (
     <div>
-      <SectionTitle text="La cagnotte en cours" color={reglage.couleur1.hex} />
+      <SectionTitle text={cagnotte.titre} color={reglage.couleur1.hex} />
       <div className="relative">
         <div
-          className="absolute top-0 left-0 w-full h-14 border-2 rounded-full"
+          className="absolute top-0 left-0 w-full h-14 border-2 rounded-full flex flex-row justify-end items-center"
           style={{ borderColor: reglage.couleur1.hex }}
-        />
+        >
+          <span className="font-other mr-4" style={{ color: reglage.couleur1.hex }}>
+            Objectif: {cagnotte.objectif}€
+          </span>
+        </div>
         <div
           className="w-full top-0 left-0 h-14 rounded-full flex items-center justify-center"
           style={{
@@ -69,6 +74,9 @@ export const HomeCagnotte = ({
               />
             );
           })}
+        </div>
+        <div className="mt-8 md:mt-16">
+          <Content data={cagnotte.texte} />
         </div>
         <div className="prose mt-8 md:mt-16">
           <ul>

@@ -126,6 +126,7 @@ fragment Palier on PalierRecord {
 }
 
 fragment Cagnotte on CagnotteRecord {
+  titre
   objectif
   aujourdhui
   texte {
